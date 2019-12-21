@@ -9,9 +9,13 @@ export default class VueRxMaxLengthValidator extends BaseValidator {
 
   validate(value) {
     if (value && value.length <= this.validationValue) {
-      return { maxLength: undefined };
+      return true;
     }
 
-    return { maxLength: this.message };
+    return false;
+  }
+
+  getMessage() {
+    return this.message;
   }
 }

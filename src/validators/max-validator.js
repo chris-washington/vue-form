@@ -9,9 +9,13 @@ export default class VueRxMaxValidator extends BaseValidator {
 
   validate(value) {
     if (typeof value === 'number' && value <= this.validationValue) {
-      return { max: undefined };
+      return true;
     }
 
-    return { max: this.message };
+    return false;
+  }
+
+  getMessage() {
+    return this.message;
   }
 }

@@ -5,26 +5,37 @@ import VueRxMaxLengthValidator from './max-length-validator';
 import VueRxMaxValidator from './max-validator';
 import VueRxMinValidator from './min-validator';
 import VueRxPatternValidator from './pattern-validator';
+import VueFormCustomValidator from './custom-validator';
 
 export default class VueRxFormValidator {
   static TYPES = validatorTypes;
 
   static createValidator(type, message, validationValue) {
-    switch (type) {
-      case VueRxFormValidator.TYPES.REQUIRED:
-        return new VueRxRequiredValidator(message);
-      case VueRxFormValidator.TYPES.MIN_LENGTH:
-        return new VueRxMinLengthValidator(validationValue, message);
-      case VueRxFormValidator.TYPES.MAX_LENGTH:
-        return new VueRxMaxLengthValidator(validationValue, message);
-      case VueRxFormValidator.TYPES.MAX:
-        return new VueRxMaxValidator(validationValue, message);
-      case VueRxFormValidator.TYPES.MIN:
-        return new VueRxMinValidator(validationValue, message);
-      case VueRxFormValidator.TYPES.PATTERN:
-        return new VueRxPatternValidator(validationValue, message);
-      default:
-        throw new Error(`Unsupported validator type: ${type}`);
+    if (typeof type === 'string') {
+      switch (type) {
+        case VueRxFormValidator.TYPES.REQUIRED:
+          return new VueRxRequiredValidator(message);
+        case VueRxFormValidator.TYPES.MIN_LENGTH:
+          return new VueRxMinLengthValidator(validationValue, message);
+        case VueRxFormValidator.TYPES.MAX_LENGTH:
+          return new VueRxMaxLengthValidator(validationValue, message);
+        case VueRxFormValidator.TYPES.MAX:
+          return new VueRxMaxValidator(validationValue, message);
+        case VueRxFormValidator.TYPES.MIN:
+          return new VueRxMinValidator(validationValue, message);
+        case VueRxFormValidator.TYPES.PATTERN:
+          return new VueRxPatternValidator(validationValue, message);
+        default:
+          throw new Error(`Unsupported validator type: ${type}`);
+      }
     }
+    const Type = type;
+    const customValidator = new Type(message);
+
+    if (customValidator instanceof VueFormCustomValidator) {
+      return new Type(message, validationValue);
+    }
+
+    throw new Error(`Unsupported custom validator type. Must extend VueFormCustomValidator: ${type}`);
   }
 }

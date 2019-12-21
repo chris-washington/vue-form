@@ -1,3 +1,4 @@
+import { isNil } from 'lodash';
 import BaseValidator from './base-validator';
 import defaultErrorMessages from './default-messages';
 import validatorTypes from './validator-types';
@@ -7,11 +8,12 @@ export default class VueRxRequiredValidator extends BaseValidator {
     super(validatorTypes.REQUIRED, undefined, message || defaultErrorMessages.required, false);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   validate(value) {
-    if (value === null || value === undefined || value.trim() === '') {
-      return { required: this.message };
-    }
+    return !(isNil(value) || value.trim() === '');
+  }
 
-    return { required: undefined };
+  getMessage() {
+    return this.message;
   }
 }

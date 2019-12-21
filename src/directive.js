@@ -1,23 +1,33 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-case-declarations */
 import Vue from 'vue';
-import VueFormHandler from './form/handler';
+import VueFormHandler from './form/form-handler';
 
-Vue.directive('form-field', {
-  bind(el, bindings) {
-    const name = bindings.value;
-    el.setAttribute('rx-form-field-name', name);
-    el.setAttribute('pristine', true);
-    el.setAttribute('dirty', false);
-  },
-});
+const submitState = new WeakMap();
 
 Vue.directive('form', {
-  bind(el, binding, vnode) {
-    if (vnode.tag === 'form') {
-      new VueFormHandler(el, vnode.context, binding.expression)
-        .init();
-    } else {
-      throw new Error('vue-form can only be used on a form-tag');
+  bind(el, binding) {
+    const { arg, value } = binding;
+    switch (arg) {
+      case 'submit':
+        submitState.set(el, value);
+        break;
+      case 'field':
+        el.dataset.formFieldName = value;
+        break;
+      default:
+        break;
+    }
+  },
+  inserted(el, binding, vnode) {
+    const { arg, expression } = binding;
+    if (!arg) {
+      if (vnode.tag === 'form') {
+        new VueFormHandler(el, vnode.context, expression, submitState)
+          .init();
+      } else {
+        throw new Error('vue-form can only be used on a form-tag');
+      }
     }
   },
 });

@@ -1,5 +1,11 @@
 import { BehaviorSubject } from 'rxjs';
-import { isNil, get, set } from 'lodash';
+import {
+  isNil,
+  get,
+  set,
+  has,
+  debounce,
+} from 'lodash';
 import VueRxFormValidator from '../validators';
 
 export default class VueRxForm {
@@ -20,10 +26,16 @@ export default class VueRxForm {
   }
 
   constructor(config) {
+    this.clearForm = debounce(this.clearForm.bind(this), 100);
     this.formData = new BehaviorSubject();
     this.validators = {};
     this.config = config;
     this.errors = {};
+    this.clearFormListener = new BehaviorSubject();
+  }
+
+  hasError(name) {
+    return has(this.errors, name);
   }
 
   validate(name, value) {
@@ -31,8 +43,13 @@ export default class VueRxForm {
     const validators = get(this.getValidators(), name);
     let errors = {};
 
-    validators.forEach((validator) => {
-      const validatorErrors = validator.validate(trimmedValue);
+    for (let i = 0, { length } = validators; i < length; i += 1) {
+      const validator = validators[i];
+      const validatorErrors = {};
+      if (!validator.validate(trimmedValue)) {
+        validatorErrors[validator.type] = validator.getMessage();
+      }
+
       const currentErrorMessage = validatorErrors[Object.keys(validatorErrors)[0]];
 
       if (validatorErrors && !isNil(currentErrorMessage)) {
@@ -41,7 +58,7 @@ export default class VueRxForm {
           errors.priorityMessage = currentErrorMessage;
         }
       }
-    });
+    }
 
     if (Object.keys(errors).length > 0) {
       const errorObject = {};
@@ -52,8 +69,25 @@ export default class VueRxForm {
     return this.errors;
   }
 
-  addValidator(dataKey, dataValidator) {
-    get(this.validators, dataKey)
+  clearForm() {
+    this.clearFormListener.next(true);
+  }
+
+  getClearFormListener() {
+    return this.clearFormListener.asObservable();
+  }
+
+  setSubmit(submitFunction) {
+    this.onSubmit = submitFunction;
+    return this;
+  }
+
+  getSubmit() {
+    return this.onSubmit;
+  }
+
+  addValidator(key, dataValidator) {
+    get(this.validators, key)
       .push(VueRxFormValidator.createValidator(
         dataValidator.type,
         dataValidator.message,
@@ -66,12 +100,12 @@ export default class VueRxForm {
 
     const dataKeys = Object.keys(validators);
 
-    for (let i = 0; i < dataKeys.length; i += 1) {
+    for (let i = 0, iLength = dataKeys.length; i < iLength; i += 1) {
       const dataKey = dataKeys[i];
       const dataValidators = validators[dataKey];
       set(this.validators, dataKey, []);
 
-      for (let j = 0; j < dataValidators.length; j += 1) {
+      for (let j = 0, jLength = dataValidators.length; j < jLength; j += 1) {
         this.addValidator(dataKey, dataValidators[j]);
       }
     }
@@ -84,6 +118,11 @@ export default class VueRxForm {
   }
 
   setFormData(formData) {
+    Object.defineProperty(this, 'data', {
+      get: () => formData,
+      configurable: true,
+    });
+
     this.formData.next(formData);
 
     return this;

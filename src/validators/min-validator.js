@@ -9,9 +9,13 @@ export default class VueRxMinValidator extends BaseValidator {
 
   validate(value) {
     if (typeof value === 'number' && value >= this.validationValue) {
-      return { min: undefined };
+      return true;
     }
 
-    return { min: this.message };
+    return false;
+  }
+
+  getMessage() {
+    return this.message;
   }
 }

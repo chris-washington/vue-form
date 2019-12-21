@@ -1,8 +1,8 @@
 import { isNil } from 'lodash';
 
 export default class BaseValidator {
-  constructor(type, validationValue, message, valueRequired = true) {
-    if (valueRequired && isNil(validationValue)) {
+  constructor(type, validationValue, message, validationValueRequired = true) {
+    if (validationValueRequired && isNil(validationValue)) {
       throw new Error(`You must provide a validationValue to validate by for the ${this.name} validator`);
     }
 
@@ -11,6 +11,7 @@ export default class BaseValidator {
 
     Object.defineProperty(this, 'type', {
       get: () => type,
+      configurable: true,
     });
   }
 
@@ -19,11 +20,7 @@ export default class BaseValidator {
     throw new Error('You have to implement the method validate!');
   }
 
-  setMessage(message) {
-    this.message = message;
-  }
-
-  setValidationValue(validationValue) {
-    this.validationValue = validationValue;
+  getMessage() {
+    throw new Error(`You have to implement the method getMessage for ${this.constructor.name}`);
   }
 }
