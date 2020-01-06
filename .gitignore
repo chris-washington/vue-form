@@ -2,9 +2,12 @@
 node_modules
 /dist
 /dist-babel
-
+/.stryker-tmp
+/reports
 /tests/e2e/videos/
 /tests/e2e/screenshots/
+/results
+/coverage
 
 # local env files
 .env.local

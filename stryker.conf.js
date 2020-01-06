@@ -10,6 +10,6 @@ module.exports = function asyncConfig(config) {
       config: require('./jest.config.js'),
     },
     reporters: ['progress', 'clear-text', 'html'],
-    coverageAnalysis: 'on',
+    coverageAnalysis: 'off',
   });
 };
