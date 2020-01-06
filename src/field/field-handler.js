@@ -6,8 +6,7 @@ export default class FieldHandler {
   constructor(el, validatorInfo) {
     this.el = el;
     this.name = this.el.dataset.formField;
-    this.fieldValidator = new FieldValidator(this.el, this.name, validatorInfo);
-    this.setFieldEventHandler(validatorInfo);
+    this.validatorInfo = validatorInfo;
   }
 
   setFieldEventHandler({ inputEvent }) {
@@ -24,6 +23,8 @@ export default class FieldHandler {
   }
 
   init() {
+    this.fieldValidator = new FieldValidator(this.el, this.name, this.validatorInfo);
+    this.setFieldEventHandler(this.validatorInfo);
     this.fieldEventHandler.initEventHandlers();
     this.fieldValidator.initValidators();
     return this;
