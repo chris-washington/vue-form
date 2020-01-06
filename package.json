@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "npm run build:babel:docs && npm run api:build && vuepress dev docs",
     "build": "vue-cli-service build --target lib --name vueForm src/index.js",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "api:build": "documentation readme src/** -f md --config documentation.yml --shallow --readme-file=docs/api/README.md --markdown-toc=false --section=API",
     "build:babel:docs": "del dist-babel && babel src --out-dir dist-babel --ignore src/main.js --plugins=@babel/plugin-proposal-class-properties",
@@ -40,6 +41,7 @@
     "@vue/cli-plugin-babel": "^4.1.2",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-plugin-unit-jest": "^4.1.2",
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/eslint-config-prettier": "^5.0.0",
