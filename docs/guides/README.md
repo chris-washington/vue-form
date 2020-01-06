@@ -221,7 +221,7 @@ Notice that on the `button`, the disabled attribute can be controlled by whether
 
 The last step before validations can begin is to initialize the validations. The reason this doesn't start automatically is because some times (on edits, for instance) the data hasn't returned from the server yet. Init only needs to be called once:
 
-```vue{11,42-46}
+```vue{33}
 <template>
   <!-- pass in the VueForm object into the v-form directive -->
 

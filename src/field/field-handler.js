@@ -25,7 +25,6 @@ export default class FieldHandler {
   }
 
   init() {
-    this.isInitalized = true;
     this.fieldEventHandler.initEventHandlers();
     this.fieldValidator.initValidators();
   }

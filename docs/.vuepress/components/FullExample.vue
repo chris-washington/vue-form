@@ -135,14 +135,14 @@ export default {
     }
   },
   mounted() {
-    this.profileValue = this.profile;
+    this.profileValue = { ...this.profile };
     this.profileForm
       .setValidations(profileValidations)
       .init();
   },
   methods: {
     submit(){
-      this.profileValue = Object.assign({}, this.profile);
+      this.profileValue = { ...this.profile };
       this.profileForm.clearForm();
     }
   },

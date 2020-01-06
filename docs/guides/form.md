@@ -104,6 +104,10 @@ export default {
 
 In the above example, you can prevent a route change if the form is dirty and let the user determine if they meant to leave the screen.
 
+::: tip
+A very important use case for `isDirty`is for edits. More often than not you will only want to code the form so that it only allows for submitting the form if it is both [valid](#valid) and `isDirty` is equal to true.
+:::
+
 ## Valid
 
 A [VueForm](/api#vueform) object can also know the state of the forms validity. This is controlled through the property `isValid`.

@@ -9,6 +9,7 @@ import registerInvalid from '../helpers/properties/register-invalid';
 
 export default {
   bind(el, binding, vnode) {
+    console.log(vnode);
     const { arg, value } = binding;
     if (arg && arg === 'inputEvent') {
       set(el.dataset, 'inputEvent', value);
