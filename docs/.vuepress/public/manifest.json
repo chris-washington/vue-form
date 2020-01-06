@@ -1,0 +1,21 @@
+{
+  "short_name": "Form",
+  "name": "Vue Form",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/chris-washington/vue-form",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/chris-washington/vue-form",
+  "theme_color": "#3eaf7c"
+}
