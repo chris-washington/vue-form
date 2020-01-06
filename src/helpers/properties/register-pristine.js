@@ -1,16 +1,16 @@
 export default function registerPristine(el) {
-  Object.defineProperty(el, 'isPristine', {
+  Object.defineProperty(el, "isPristine", {
     set(pristine) {
       this.pristine = pristine;
 
       if (pristine) {
-        this.setAttribute('pristine', '');
+        this.setAttribute("pristine", "");
       } else {
-        this.removeAttribute('pristine');
+        this.removeAttribute("pristine");
       }
     },
     get() {
       return this.pristine;
-    },
+    }
   });
 }

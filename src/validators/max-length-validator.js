@@ -1,11 +1,15 @@
-import { inRange, isNil } from 'lodash-es';
-import BaseValidator from './base-validator';
-import defaultErrorMessages from './default-messages';
-import validatorTypes from './validator-types';
+import { inRange, isNil } from "lodash-es";
+import BaseValidator from "./base-validator";
+import defaultErrorMessages from "./default-messages";
+import validatorTypes from "./validator-types";
 
 export default class VueRxMaxLengthValidator extends BaseValidator {
   constructor(validationValue, message) {
-    super(validatorTypes.MAX_LENGTH, validationValue, message || `${defaultErrorMessages.maxLength} ${validationValue}.`);
+    super(
+      validatorTypes.MAX_LENGTH,
+      validationValue,
+      message || `${defaultErrorMessages.maxLength} ${validationValue}.`
+    );
   }
 
   validate(value) {

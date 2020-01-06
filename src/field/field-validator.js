@@ -1,12 +1,7 @@
-import {
-  isNil,
-  uniqBy,
-  get,
-} from 'lodash-es';
-import VueRxFormValidator from '../validators';
+import { isNil, uniqBy, get } from "lodash-es";
+import VueRxFormValidator from "../validators";
 
-import getValidationErrorIfPresent from '../validators/validation-error';
-
+import getValidationErrorIfPresent from "../validators/validation-error";
 
 export default class FieldValidator {
   constructor(el, name, validatorInfo) {
@@ -21,16 +16,18 @@ export default class FieldValidator {
 
   setValidations(validators) {
     this.validators = [];
-    const uniqueValidators = uniqBy(validators, 'type');
+    const uniqueValidators = uniqBy(validators, "type");
 
     for (let i = 0, { length } = validators; i < length; i += 1) {
       const validator = uniqueValidators[i];
-      this.validators.push(VueRxFormValidator.createValidator(
-        validator.type,
-        validator.message,
-        validator.validation,
-        validator.options,
-      ));
+      this.validators.push(
+        VueRxFormValidator.createValidator(
+          validator.type,
+          validator.message,
+          validator.validation,
+          validator.options
+        )
+      );
     }
   }
 
@@ -48,7 +45,7 @@ export default class FieldValidator {
   }
 
   checkIfRequired() {
-    const requiredValidator = this.validators.find(validator => validator.type === 'required');
+    const requiredValidator = this.validators.find(validator => validator.type === "required");
 
     if (isNil(requiredValidator)) {
       return true;
@@ -58,15 +55,15 @@ export default class FieldValidator {
   }
 
   checkNotHasValueAndNotRequired(value) {
-    return !this.checkIfRequired() && value === '';
+    return !this.checkIfRequired() && value === "";
   }
 
   shouldValidate(value) {
-    return !(this.checkNotHasValueAndNotRequired(value));
+    return !this.checkNotHasValueAndNotRequired(value);
   }
 
   isCheckedType() {
-    return this.el.type === 'checkbox' || this.el.type === 'radio';
+    return this.el.type === "checkbox" || this.el.type === "radio";
   }
 
   async validate() {
@@ -77,8 +74,8 @@ export default class FieldValidator {
 
     let trimmedValue = value;
 
-    if (typeof trimmedValue !== 'boolean') {
-      trimmedValue = value ? value.trim() : '';
+    if (typeof trimmedValue !== "boolean") {
+      trimmedValue = value ? value.trim() : "";
     }
 
     const { name } = this;
@@ -108,7 +105,6 @@ export default class FieldValidator {
         }
       }
     }
-
 
     if (!isNil(errors)) {
       errors.priorityMessage = this.getPriorityErrorMessage(priorityIndex, errors);

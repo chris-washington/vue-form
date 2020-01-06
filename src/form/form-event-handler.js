@@ -1,12 +1,8 @@
-import { fromEvent } from 'rxjs';
-import {
-  cloneDeep,
-  set,
-  unset,
-} from 'lodash-es';
-import addSubscription from '../helpers/utils/add-subscription';
+import { fromEvent } from "rxjs";
+import { cloneDeep, set, unset } from "lodash-es";
+import addSubscription from "../helpers/utils/add-subscription";
 
-import FormFieldHandler from './form-field-handler';
+import FormFieldHandler from "./form-field-handler";
 
 export default class FormEventHandler {
   constructor(el, form, formAttributeHandler) {
@@ -17,15 +13,16 @@ export default class FormEventHandler {
       this.el,
       this.form,
       this,
-      formAttributeHandler.component,
+      formAttributeHandler.component
     );
   }
 
   init() {
     this.formFieldHandler.init();
-    addSubscription(this.el,
-      fromEvent(this.el, 'submit')
-        .subscribe(event => event.preventDefault()));
+    addSubscription(
+      this.el,
+      fromEvent(this.el, "submit").subscribe(event => event.preventDefault())
+    );
   }
 
   getBoundInputEventFunction() {

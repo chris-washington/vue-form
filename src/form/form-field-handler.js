@@ -1,9 +1,6 @@
-import {
-  get,
-  isNil,
-} from 'lodash-es';
+import { get, isNil } from "lodash-es";
 
-import FieldHandler from '../field/field-handler';
+import FieldHandler from "../field/field-handler";
 
 export default class FormFieldHandler {
   constructor(el, form, formEventHandler, component) {
@@ -16,7 +13,7 @@ export default class FormFieldHandler {
   getFieldValidatorInfo(name, validators, dataName) {
     const handleFieldInput = this.formEventHandler.getBoundInputEventFunction();
     const handleFieldBlur = this.formEventHandler.getBoundBlurEventFunction();
-    const inputEvent = this.el.dataset.inputEvent || 'input';
+    const inputEvent = this.el.dataset.inputEvent || "input";
     const { component } = this;
     const originalValue = get(this.component, dataName);
     return {
@@ -26,7 +23,7 @@ export default class FormFieldHandler {
       component,
       handleFieldBlur,
       handleFieldInput,
-      originalValue,
+      originalValue
     };
   }
 
@@ -52,13 +49,12 @@ export default class FormFieldHandler {
           const validatorInfo = this.getFieldValidatorInfo(
             name,
             validators,
-            field.dataset.dataName,
+            field.dataset.dataName
           );
 
-          field.fieldHandler = new FieldHandler(field, validatorInfo)
-            .init();
+          field.fieldHandler = new FieldHandler(field, validatorInfo).init();
           // eslint-disable-next-line no-await-in-loop
-          errors = { ...errors, ...await field.fieldHandler.revalidate() };
+          errors = { ...errors, ...(await field.fieldHandler.revalidate()) };
         }
       }
     }

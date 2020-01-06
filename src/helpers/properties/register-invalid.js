@@ -1,15 +1,15 @@
 export default function registerInvalid(el) {
-  Object.defineProperty(el, 'isInvalid', {
+  Object.defineProperty(el, "isInvalid", {
     set(valid) {
       this.inValid = valid;
       if (valid) {
-        this.setAttribute('invalid', '');
+        this.setAttribute("invalid", "");
       } else {
-        this.removeAttribute('invalid');
+        this.removeAttribute("invalid");
       }
     },
     get() {
       return this.inValid;
-    },
+    }
   });
 }

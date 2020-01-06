@@ -1,14 +1,22 @@
-import { inRange } from 'lodash-es';
-import { isValidRange, throwIfNotTrue } from '../helpers/utils/operations';
-import BaseValidator from './base-validator';
-import defaultErrorMessages from './default-messages';
-import validatorTypes from './validator-types';
+import { inRange } from "lodash-es";
+import { isValidRange, throwIfNotTrue } from "../helpers/utils/operations";
+import BaseValidator from "./base-validator";
+import defaultErrorMessages from "./default-messages";
+import validatorTypes from "./validator-types";
 
 export default class VueRxRangeLengthValidator extends BaseValidator {
   constructor(validationValue, message) {
-    throwIfNotTrue(isValidRange(validationValue), `${validationValue.toString()} is not a proper range array.`);
+    throwIfNotTrue(
+      isValidRange(validationValue),
+      `${validationValue.toString()} is not a proper range array.`
+    );
 
-    super(validatorTypes.MAX_LENGTH, validationValue, message || `${defaultErrorMessages.rangeLength} ${validationValue[0]} and ${validationValue[1]}.`);
+    super(
+      validatorTypes.MAX_LENGTH,
+      validationValue,
+      message ||
+        `${defaultErrorMessages.rangeLength} ${validationValue[0]} and ${validationValue[1]}.`
+    );
   }
 
   validate(value) {

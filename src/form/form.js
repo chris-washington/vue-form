@@ -1,7 +1,5 @@
-import { BehaviorSubject } from 'rxjs';
-import {
-  has,
-} from 'lodash-es';
+import { BehaviorSubject } from "rxjs";
+import { has } from "lodash-es";
 
 /**
  * @module VueForm
@@ -155,7 +153,6 @@ export default class VueForm {
     return this.validators;
   }
 }
-
 
 /**
  * Defines a validation for a field

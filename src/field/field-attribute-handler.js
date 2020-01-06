@@ -1,7 +1,7 @@
-import { get, isEqualWith } from 'lodash-es';
-import registerFieldName from '../helpers/properties/register-field-name';
-import registerFieldErrors from '../helpers/properties/register-field-errors';
-import { isInclusiveEmpty } from '../helpers/utils/operations';
+import { get, isEqualWith } from "lodash-es";
+import registerFieldName from "../helpers/properties/register-field-name";
+import registerFieldErrors from "../helpers/properties/register-field-errors";
+import { isInclusiveEmpty } from "../helpers/utils/operations";
 
 export default class FieldAttributeHandler {
   constructor(el, fieldValidator) {
@@ -36,17 +36,13 @@ export default class FieldAttributeHandler {
   }
 
   setInputDirty() {
-    this.el.isDirty = !isEqualWith(
-      this.originalValue,
-      this.getValue(),
-      (a, b) => {
-        if (isInclusiveEmpty(a) && isInclusiveEmpty(b)) {
-          return true;
-        }
+    this.el.isDirty = !isEqualWith(this.originalValue, this.getValue(), (a, b) => {
+      if (isInclusiveEmpty(a) && isInclusiveEmpty(b)) {
+        return true;
+      }
 
-        return undefined;
-      },
-    );
+      return undefined;
+    });
   }
 
   setInputNotPristine() {

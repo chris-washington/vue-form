@@ -1,6 +1,6 @@
-import FieldValidator from './field-validator';
-import FieldEventHandler from './field-event-handler';
-import FieldEvents from './field-events';
+import FieldValidator from "./field-validator";
+import FieldEventHandler from "./field-event-handler";
+import FieldEvents from "./field-events";
 
 export default class FieldHandler {
   constructor(el, validatorInfo) {

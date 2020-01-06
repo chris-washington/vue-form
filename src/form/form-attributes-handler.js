@@ -1,8 +1,6 @@
-import {
-  isNil,
-} from 'lodash-es';
+import { isNil } from "lodash-es";
 
-import FormEventHandler from './form-event-handler';
+import FormEventHandler from "./form-event-handler";
 
 export default class FormAttributesHandler {
   constructor(el, form, component) {
@@ -29,10 +27,9 @@ export default class FormAttributesHandler {
     this.el.isValid = this.form.isValid;
   }
 
-
   getFormDirtiness() {
     return this.el.fields
-      .map(field => !isNil(field.getAttribute('dirty')))
+      .map(field => !isNil(field.getAttribute("dirty")))
       .reduce((accumulator, current) => accumulator || current, false);
   }
 

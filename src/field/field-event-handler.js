@@ -1,7 +1,7 @@
-import { fromEvent } from 'rxjs';
-import { isNil, get } from 'lodash-es';
-import addSubscription from '../helpers/utils/add-subscription';
-import FieldAttributeHandler from './field-attribute-handler';
+import { fromEvent } from "rxjs";
+import { isNil, get } from "lodash-es";
+import addSubscription from "../helpers/utils/add-subscription";
+import FieldAttributeHandler from "./field-attribute-handler";
 
 export default class FieldEventHandler {
   constructor(el, fieldEvents, fieldValidator) {
@@ -12,10 +12,7 @@ export default class FieldEventHandler {
     this.bindInputEvent(inputEvent);
     this.bindBlurEvent();
     this.fieldValidator = fieldValidator;
-    this.fieldAttributeHandler = new FieldAttributeHandler(
-      el,
-      fieldValidator,
-    );
+    this.fieldAttributeHandler = new FieldAttributeHandler(el, fieldValidator);
   }
 
   async clear() {
@@ -23,17 +20,18 @@ export default class FieldEventHandler {
   }
 
   bindInputEvent(inputEvent) {
-    addSubscription(this.el,
-      fromEvent(this.el, inputEvent).subscribe(this.handleInputEvent.bind(this)));
+    addSubscription(
+      this.el,
+      fromEvent(this.el, inputEvent).subscribe(this.handleInputEvent.bind(this))
+    );
   }
 
   bindBlurEvent() {
-    addSubscription(this.el,
-      fromEvent(this.el, 'blur').subscribe(this.handleBlurEvent.bind(this)));
+    addSubscription(this.el, fromEvent(this.el, "blur").subscribe(this.handleBlurEvent.bind(this)));
   }
 
   handleEvent(event) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       setTimeout(async () => {
         await this.fieldValidator.validatorInfo.component.$nextTick();
         event.preventDefault();
@@ -46,7 +44,7 @@ export default class FieldEventHandler {
         resolve({
           errors,
           name,
-          value,
+          value
         });
       }, 0);
     });
@@ -54,7 +52,7 @@ export default class FieldEventHandler {
 
   async handleInputEvent(event) {
     this.el.isInvalid = false;
-    const activeError = !isNil(this.el.getAttribute('active-error'));
+    const activeError = !isNil(this.el.getAttribute("active-error"));
     if (activeError) {
       await this.handleBlurEvent(event);
     } else {
@@ -74,7 +72,7 @@ export default class FieldEventHandler {
       handleFieldBlur,
       handleFieldInput,
       originalValue,
-      component,
+      component
     } = this.fieldValidator.getValidatorInfo();
     this.component = component;
     this.onFormFieldChanged = handleFieldBlur;

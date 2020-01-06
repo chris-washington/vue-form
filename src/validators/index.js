@@ -1,19 +1,19 @@
-import validatorTypes from './validator-types';
-import VueRxRequiredValidator from './required-validator';
-import VueRxMinLengthValidator from './min-length-validator';
-import VueRxMaxLengthValidator from './max-length-validator';
-import VueRxMaxValidator from './max-validator';
-import VueRxMinValidator from './min-validator';
-import VueRxPatternValidator from './pattern-validator';
-import VueFormCustomValidator from './custom-validator';
-import VueRxRangeLengthValidator from './range-length-validator';
-import VueRxRangeValidator from './range-validator';
+import validatorTypes from "./validator-types";
+import VueRxRequiredValidator from "./required-validator";
+import VueRxMinLengthValidator from "./min-length-validator";
+import VueRxMaxLengthValidator from "./max-length-validator";
+import VueRxMaxValidator from "./max-validator";
+import VueRxMinValidator from "./min-validator";
+import VueRxPatternValidator from "./pattern-validator";
+import VueFormCustomValidator from "./custom-validator";
+import VueRxRangeLengthValidator from "./range-length-validator";
+import VueRxRangeValidator from "./range-validator";
 
 export default class VueRxFormValidator {
   static TYPES = validatorTypes;
 
   static createValidator(type, message, validationValue, options) {
-    if (typeof type === 'string') {
+    if (typeof type === "string") {
       switch (type) {
         case VueRxFormValidator.TYPES.REQUIRED:
           return new VueRxRequiredValidator(validationValue, message);
@@ -42,6 +42,8 @@ export default class VueRxFormValidator {
       return new Type(message, options);
     }
 
-    throw new Error(`Unsupported custom validator type. Must extend VueFormCustomValidator: ${type}`);
+    throw new Error(
+      `Unsupported custom validator type. Must extend VueFormCustomValidator: ${type}`
+    );
   }
 }

@@ -1,10 +1,8 @@
-import {
-  unset,
-} from 'lodash-es';
+import { unset } from "lodash-es";
 
-import addSubscription from '../helpers/utils/add-subscription';
+import addSubscription from "../helpers/utils/add-subscription";
 
-import FormAttributesHandler from './form-attributes-handler';
+import FormAttributesHandler from "./form-attributes-handler";
 
 export default class VueFormHandler {
   constructor(el, component, formName) {
@@ -21,7 +19,7 @@ export default class VueFormHandler {
         const field = this.el.fields[i];
         unset(this.component, field.dataset.dataName);
         // eslint-disable-next-line no-await-in-loop
-        errors = { ...errors, ...await field.fieldHandler.revalidate() };
+        errors = { ...errors, ...(await field.fieldHandler.revalidate()) };
       }
       this.formAttributeHandler.setFormAttributes(errors);
       await this.component.$nextTick();
@@ -31,15 +29,18 @@ export default class VueFormHandler {
 
   async handleInitialization(ready) {
     if (ready) {
-      await this.formAttributeHandler
-        .init();
+      await this.formAttributeHandler.init();
     }
   }
 
   init() {
-    addSubscription(this.el, this.form.getInitObservable()
-      .subscribe(this.handleInitialization.bind(this)));
-    addSubscription(this.el, this.form.getClearFormObservable()
-      .subscribe(this.handleClearForm.bind(this)));
+    addSubscription(
+      this.el,
+      this.form.getInitObservable().subscribe(this.handleInitialization.bind(this))
+    );
+    addSubscription(
+      this.el,
+      this.form.getClearFormObservable().subscribe(this.handleClearForm.bind(this))
+    );
   }
 }
