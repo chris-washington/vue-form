@@ -1,134 +1,166 @@
 import { BehaviorSubject } from 'rxjs';
 import {
-  isNil,
-  get,
-  set,
   has,
-  debounce,
-} from 'lodash';
-import VueRxFormValidator from '../validators';
+} from 'lodash-es';
 
-export default class VueRxForm {
+/**
+ * @module VueForm
+ * @class
+ * @classdesc Used to create a form object to do validation
+ */
+export default class VueForm {
+  /**
+   * Creates a form object that can do validations
+   *
+   * @example
+   * // To initialize
+   * export default {
+   *    data() {
+   *      return {
+   *        myForm: this.$createForm(),
+   *      };
+   *    },
+   * }
+   *
+   * @example
+   * // can also import
+   * import { VueForm } from 'vue-form'
+   *
+   * export default {
+   *    data() {
+   *      return {
+   *        myForm: new VueForm(),
+   *      }
+   *    }
+   * }
+   */
+  constructor() {
+    this.initSubject = new BehaviorSubject();
+    this.validators = {};
+    this.errors = {};
+    this.clearForSubject = new BehaviorSubject();
+  }
+
+  /**
+   * Returns whether a form is dirty. A form is dirty
+   * When 1 or more fields value does not match its original
+   * valuebundleRenderer.renderToStream
+   */
   get isDirty() {
     return this.dirty;
   }
 
+  /**
+   * Returns whether a form is pristine. A form is pristine
+   * if a user has never changes a value in a field. Once changed
+   * it does not return to a pristine state.
+   */
   get isPristine() {
     return this.pristine;
   }
 
+  /**
+   * Returns whether a form has fields that, when validated are
+   * all valid.
+   */
   get isValid() {
     return this.valid;
   }
 
+  /**
+   * @private
+   */
   set isValid(valid) {
     this.valid = valid;
   }
 
-  constructor(config) {
-    this.clearForm = debounce(this.clearForm.bind(this), 100);
-    this.formData = new BehaviorSubject();
-    this.validators = {};
-    this.config = config;
-    this.errors = {};
-    this.clearFormListener = new BehaviorSubject();
-  }
-
+  /**
+   * Returns whether a field has errors
+   * @param {string } name - name of the field that needs input.
+   *
+   * @example
+   * // if your data looks like the following:
+   * myData: {
+   *   myInput: null
+   * }
+   *
+   * // errors can be retrieved by
+   * myForm.hasError('myInput');
+   *
+   * @example
+   * // for deeply nested validation.
+   * // if your data looks like the following:
+   * myData: {
+   *  someEntity: {
+   *    myInput: null
+   *  }
+   * }
+   *
+   * // errors can be retrieved by
+   * myForm.hasError('someEntity.myInput');
+   */
   hasError(name) {
     return has(this.errors, name);
   }
 
-  validate(name, value) {
-    const trimmedValue = value.trim();
-    const validators = get(this.getValidators(), name);
-    let errors = {};
-
-    for (let i = 0, { length } = validators; i < length; i += 1) {
-      const validator = validators[i];
-      const validatorErrors = {};
-      if (!validator.validate(trimmedValue)) {
-        validatorErrors[validator.type] = validator.getMessage();
-      }
-
-      const currentErrorMessage = validatorErrors[Object.keys(validatorErrors)[0]];
-
-      if (validatorErrors && !isNil(currentErrorMessage)) {
-        errors = Object.assign({}, errors, validatorErrors);
-        if (isNil(errors.priorityMessage)) {
-          errors.priorityMessage = currentErrorMessage;
-        }
-      }
-    }
-
-    if (Object.keys(errors).length > 0) {
-      const errorObject = {};
-      set(errorObject, name, errors);
-      return Object.assign({}, this.errors, errorObject);
-    }
-
-    return this.errors;
+  /**
+   * Sets the validators that will validate the fields. Once {@link init}
+   * is called this can no longer be set.
+   *
+   * @param {...VueFormDataValidator} validators - the validators to validate each field.
+   * @returns {VueForm} - returns self for chaining.
+   */
+  setValidations(validators) {
+    this.validators = validators;
+    return this;
   }
 
+  /**
+   * Clears the form back to a blank state. Please
+   * Note that this does not send it back to its original
+   * state.
+   */
   clearForm() {
-    this.clearFormListener.next(true);
+    this.clearForSubject.next(true);
   }
 
-  getClearFormListener() {
-    return this.clearFormListener.asObservable();
+  /**
+   * @private
+   */
+  getClearFormObservable() {
+    return this.clearForSubject.asObservable();
   }
 
-  setSubmit(submitFunction) {
-    this.onSubmit = submitFunction;
-    return this;
+  /**
+   * The final step in the form setup. Once the data
+   * is submitted and the validators are added, init
+   * has to be called to start the process of validation.
+   */
+  init() {
+    this.initSubject.next(true);
   }
 
-  getSubmit() {
-    return this.onSubmit;
+  /**
+   * @private
+   */
+  getInitObservable() {
+    return this.initSubject.asObservable();
   }
 
-  addValidator(key, dataValidator) {
-    get(this.validators, key)
-      .push(VueRxFormValidator.createValidator(
-        dataValidator.type,
-        dataValidator.message,
-        dataValidator.validation,
-      ));
-  }
-
-  setValidators(validators) {
-    this.validators = {};
-
-    const dataKeys = Object.keys(validators);
-
-    for (let i = 0, iLength = dataKeys.length; i < iLength; i += 1) {
-      const dataKey = dataKeys[i];
-      const dataValidators = validators[dataKey];
-      set(this.validators, dataKey, []);
-
-      for (let j = 0, jLength = dataValidators.length; j < jLength; j += 1) {
-        this.addValidator(dataKey, dataValidators[j]);
-      }
-    }
-
-    return this;
-  }
-
+  /**
+   * Returns the current validator object.
+   * @returns {...VueFormDataValidator}
+   */
   getValidators() {
     return this.validators;
   }
-
-  setFormData(formData) {
-    Object.defineProperty(this, 'data', {
-      get: () => formData,
-      configurable: true,
-    });
-
-    this.formData.next(formData);
-
-    return this;
-  }
-
-  getFormData() {
-    return this.formData.asObservable();
-  }
 }
+
+
+/**
+ * Defines a validation for a field
+ * @typedef {Object} VueFormValidator
+ * @property {VueFormValidatorTypes|VueFormCustomValidator} type - The type of validation to be done
+ * @property {string|number} validation - a number or string to validate against.
+ * @property {string} message - what to include in errors if the validation fails.
+ */

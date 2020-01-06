@@ -1,18 +1,15 @@
+import { inRange } from 'lodash-es';
 import BaseValidator from './base-validator';
 import defaultErrorMessages from './default-messages';
 import validatorTypes from './validator-types';
 
 export default class VueRxMinLengthValidator extends BaseValidator {
   constructor(validationValue, message) {
-    super(validatorTypes.MIN_LENGTH, validationValue, message || defaultErrorMessages.minLength);
+    super(validatorTypes.MIN_LENGTH, validationValue, message || `${defaultErrorMessages.minLength} ${validationValue}.`);
   }
 
   validate(value) {
-    if (value && value.length >= this.validationValue) {
-      return true;
-    }
-
-    return false;
+    return value && inRange(value.length, this.validationValue, Infinity);
   }
 
   getMessage() {

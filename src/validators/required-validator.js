@@ -1,16 +1,25 @@
-import { isNil } from 'lodash';
 import BaseValidator from './base-validator';
 import defaultErrorMessages from './default-messages';
 import validatorTypes from './validator-types';
+import { isInclusiveEmpty } from '../helpers/utils/operations';
 
 export default class VueRxRequiredValidator extends BaseValidator {
-  constructor(message) {
-    super(validatorTypes.REQUIRED, undefined, message || defaultErrorMessages.required, false);
+  constructor(validationValue, message) {
+    super(
+      validatorTypes.REQUIRED,
+      validationValue,
+      message || defaultErrorMessages.required,
+      false,
+    );
   }
 
   // eslint-disable-next-line class-methods-use-this
   validate(value) {
-    return !(isNil(value) || value.trim() === '');
+    const empty = isInclusiveEmpty(value);
+
+    return !this.validationValue && !empty
+      ? true
+      : !empty;
   }
 
   getMessage() {
