@@ -1,4 +1,6 @@
 import FieldHandler from "@/field/field-handler";
+import FieldValidator from "@/field/field-validator";
+import FieldEvents from "@/field/field-events";
 
 jest.mock("@/field/field-events");
 jest.mock("@/field/field-validator");
@@ -6,7 +8,8 @@ jest.mock("@/field/field-event-handler");
 
 describe("field/field-handler.js", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.resetAllMocks();
+    jest.restoreAllMocks();
   });
 
   describe("when initialized", () => {
@@ -22,7 +25,10 @@ describe("field/field-handler.js", () => {
         }
       };
 
-      validatorInfo = jest.fn();
+      validatorInfo = {
+        inputEvent: "input"
+      };
+
       fieldHandler = new FieldHandler(el, validatorInfo);
     });
 
@@ -32,6 +38,30 @@ describe("field/field-handler.js", () => {
       expect(fieldHandler.validatorInfo).toEqual(validatorInfo);
     });
 
-    describe("when init is called", () => {});
+    describe("when init is called", () => {
+      let returnedFieldHandler;
+      beforeEach(() => {
+        jest.spyOn(fieldHandler, "initFieldEventHandler");
+        returnedFieldHandler = fieldHandler.init();
+      });
+
+      it("then all initializations are handled", () => {
+        expect(fieldHandler.fieldValidator).toBeDefined();
+        expect(FieldValidator).toHaveBeenCalledWith(el, name, validatorInfo);
+        expect(fieldHandler.initFieldEventHandler).toHaveBeenCalledWith(validatorInfo);
+        expect(fieldHandler.fieldValidator.initValidators).toHaveBeenCalled();
+        expect(returnedFieldHandler).toBe(fieldHandler);
+      });
+    });
+
+    describe("when initFieldEventHandler is called", () => {
+      beforeEach(() => {
+        fieldHandler.initFieldEventHandler(validatorInfo);
+      });
+
+      it("then FieldEventHandler is initialized", () => {
+        expect(FieldEvents).toHaveBeenCalledWith(validatorInfo.inputEvent);
+      });
+    });
   });
 });

@@ -9,9 +9,17 @@ export default class FieldHandler {
     this.validatorInfo = validatorInfo;
   }
 
-  setFieldEventHandler({ inputEvent }) {
+  init() {
+    this.fieldValidator = new FieldValidator(this.el, this.name, this.validatorInfo);
+    this.initFieldEventHandler(this.validatorInfo);
+    this.fieldValidator.initValidators();
+    return this;
+  }
+
+  initFieldEventHandler({ inputEvent }) {
     const fieldEvents = new FieldEvents(inputEvent);
     this.fieldEventHandler = new FieldEventHandler(this.el, fieldEvents, this.fieldValidator);
+    this.fieldEventHandler.initEventHandlers();
   }
 
   clear() {
@@ -20,13 +28,5 @@ export default class FieldHandler {
 
   async revalidate() {
     return this.fieldValidator.validate();
-  }
-
-  init() {
-    this.fieldValidator = new FieldValidator(this.el, this.name, this.validatorInfo);
-    this.setFieldEventHandler(this.validatorInfo);
-    this.fieldEventHandler.initEventHandlers();
-    this.fieldValidator.initValidators();
-    return this;
   }
 }
