@@ -55,7 +55,8 @@ export default class FormFieldHandler {
             field.dataset.dataName,
           );
 
-          field.fieldHandler = new FieldHandler(field, validatorInfo);
+          field.fieldHandler = new FieldHandler(field, validatorInfo)
+            .init();
           // eslint-disable-next-line no-await-in-loop
           errors = { ...errors, ...await field.fieldHandler.revalidate() };
         }
