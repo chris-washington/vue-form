@@ -17,17 +17,10 @@ export default class FieldValidator {
   setValidations(validators) {
     this.validators = [];
     const uniqueValidators = uniqBy(validators, "type");
+    for (let i = validators.length; i--; ) {
+      const { type, message, validation, options } = uniqueValidators[i];
 
-    for (let i = 0, { length } = validators; i < length; i += 1) {
-      const validator = uniqueValidators[i];
-      this.validators.push(
-        VueRxFormValidator.createValidator(
-          validator.type,
-          validator.message,
-          validator.validation,
-          validator.options
-        )
-      );
+      this.validators[i] = VueRxFormValidator.createValidator(type, message, validation, options);
     }
   }
 
@@ -66,43 +59,48 @@ export default class FieldValidator {
     return this.el.type === "checkbox" || this.el.type === "radio";
   }
 
-  async validate() {
-    const { component } = this.validatorInfo;
+  getResult(name, errors) {
+    const result = {};
+    result[name] = errors;
+    return result;
+  }
 
-    await component.$nextTick();
-    const value = get(component, this.el.dataset.dataName);
+  getTrimmedValue(value) {
+    let trimmedValue;
 
-    let trimmedValue = value;
-
-    if (typeof trimmedValue !== "boolean") {
-      trimmedValue = value ? value.trim() : "";
+    if (typeof value !== "boolean") {
+      trimmedValue = value.trim();
     }
+
+    return trimmedValue || value;
+  }
+
+  async validate() {
+    let errors;
+    let priorityIndex;
+
+    const value = this.getTrimmedValue(
+      get(this.validatorInfo.component, this.el.dataset.dataName) || ""
+    );
 
     const { name } = this;
 
     const { validators } = this;
 
-    let errors;
-    let priorityIndex;
-
-    if (!this.shouldValidate(trimmedValue)) {
-      const result = {};
-      result[name] = errors;
+    if (!this.shouldValidate(value)) {
+      const result = this.getResult(name, errors);
       this.el.errors = result;
       return result;
     }
 
-    for (let i = 0, { length } = validators; i < length; i += 1) {
+    for (let i = validators.length; i--; ) {
       const validator = validators[i];
       // eslint-disable-next-line no-await-in-loop
-      const validatorErrors = await getValidationErrorIfPresent(validator, trimmedValue);
+      const validatorErrors = await getValidationErrorIfPresent(validator, value);
 
       if (!isNil(validatorErrors)) {
-        errors = Object.assign({}, errors, validatorErrors);
-
-        if (isNil(priorityIndex)) {
-          priorityIndex = i;
-        }
+        errors = { ...errors, ...validatorErrors };
+        priorityIndex = i;
       }
     }
 
@@ -110,8 +108,7 @@ export default class FieldValidator {
       errors.priorityMessage = this.getPriorityErrorMessage(priorityIndex, errors);
     }
 
-    const result = {};
-    result[name] = errors;
+    const result = this.getResult(name, errors);
     this.el.errors = result;
     return result;
   }

@@ -21,10 +21,11 @@ module.exports = (options, context) => ({
     ['link', { rel: 'apple-touch-icon', href: '/images/apple-touch-icon.png' }],
     ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
   ],
-  plugins: ['@vuepress/pwa', {
-      serviceWorker: true,
-      updatePopup: true
-  }],
+  plugins: [
+    ['@vuepress/search', {
+      searchMaxSuggestions: 10
+    }]
+  ],
   alias: {
     'vue-form': `${process.cwd()}/dist-babel/index.js`
   },

@@ -36,13 +36,12 @@ export default class FormFieldHandler {
     const validatorKeys = Object.keys(validatorObject);
     let errors = {};
 
-    for (let i = 0, { length } = validatorKeys; i < length; i += 1) {
+    for (let i = validatorKeys.length; i--; ) {
       const name = validatorKeys[i];
       const fields = this.findFieldsByName(name);
 
       if (!isNil(fields)) {
-        const fieldsLength = fields.length;
-        for (let j = 0; j < fieldsLength; j += 1) {
+        for (let j = fields.length; j--; ) {
           const field = fields[j];
           const validators = validatorObject[name];
 

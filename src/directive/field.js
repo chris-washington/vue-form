@@ -7,6 +7,8 @@ import registerDatasetValid from "../helpers/properties/register-dataset-valid";
 import getModelDirective from "../helpers/utils/get-model-directive";
 import registerInvalid from "../helpers/properties/register-invalid";
 
+import { unsubscribeElement } from "../helpers/utils/operations";
+
 export default {
   bind(el, binding, vnode) {
     const { arg, value } = binding;
@@ -50,10 +52,6 @@ export default {
     }
   },
   unbind(el) {
-    if (!isNil(el.eventSubscriptions) && el.eventSubscriptions.length > 0) {
-      for (let i = 0, { length } = el.eventSubscriptions; i < length; i += 1) {
-        el.eventSubscriptions[i].unsubscribe();
-      }
-    }
+    unsubscribeElement(el);
   }
 };

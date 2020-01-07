@@ -1,6 +1,6 @@
 import { isNil, get } from "lodash-es";
 
-export default function registerFieldErrors(el, name) {
+const registerFieldErrors = (el, name) => {
   Object.defineProperty(el, "errors", {
     get() {
       if (!this.fieldErrors) {
@@ -15,4 +15,6 @@ export default function registerFieldErrors(el, name) {
       this.isDataValid = !this.hasErrors;
     }
   });
-}
+};
+
+export default registerFieldErrors;

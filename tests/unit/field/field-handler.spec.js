@@ -1,6 +1,7 @@
 import FieldHandler from "@/field/field-handler";
 import FieldValidator from "@/field/field-validator";
 import FieldEvents from "@/field/field-events";
+import FieldEventHandler from "@/field/field-event-handler";
 
 jest.mock("@/field/field-events");
 jest.mock("@/field/field-validator");
@@ -54,13 +55,43 @@ describe("field/field-handler.js", () => {
       });
     });
 
-    describe("when initFieldEventHandler is called", () => {
+    describe("when revalidate is called", () => {
+      beforeEach(async () => {
+        fieldHandler.init();
+        await fieldHandler.revalidate();
+      });
+
+      it("then fieldValidator.validate is called", () => {
+        expect(fieldHandler.fieldValidator.validate).toHaveBeenCalled();
+      });
+    });
+
+    describe("when clear is called", () => {
       beforeEach(() => {
+        fieldHandler.init();
+        fieldHandler.clear();
+      });
+
+      it("then fieldEventHandler.clear is called", () => {
+        expect(fieldHandler.fieldEventHandler.clear).toHaveBeenCalled();
+      });
+    });
+
+    describe("when initFieldEventHandler is called", () => {
+      let fieldValidator;
+      beforeEach(() => {
+        fieldValidator = jest.fn();
+        fieldHandler.fieldValidator = fieldValidator;
         fieldHandler.initFieldEventHandler(validatorInfo);
       });
 
       it("then FieldEventHandler is initialized", () => {
         expect(FieldEvents).toHaveBeenCalledWith(validatorInfo.inputEvent);
+        expect(FieldEventHandler).toHaveBeenLastCalledWith(
+          el,
+          expect.any(FieldEvents),
+          fieldValidator
+        );
       });
     });
   });

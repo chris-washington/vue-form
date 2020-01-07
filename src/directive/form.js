@@ -1,7 +1,8 @@
-import { isNil, set } from "lodash-es";
+import { set } from "lodash-es";
 import VueFormHandler from "../form/form-handler";
 import registerGlobal from "../helpers/properties/register-global";
 import registerFields from "../helpers/properties/register-fields";
+import { unsubscribeElement } from "../helpers/utils/operations";
 
 export default {
   bind(el, binding) {
@@ -27,10 +28,6 @@ export default {
     }
   },
   unbind(el) {
-    if (!isNil(el.eventSubscriptions) && el.eventSubscriptions.length > 0) {
-      for (let i = 0, { length } = el.eventSubscriptions; i < length; i += 1) {
-        el.eventSubscriptions[i].unsubscribe();
-      }
-    }
+    unsubscribeElement(el);
   }
 };

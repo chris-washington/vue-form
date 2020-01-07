@@ -1,4 +1,4 @@
-export default function registerDatasetValid(el) {
+const registerDatasetValid = el => {
   Object.defineProperty(el, "isDataValid", {
     set(valid) {
       this.dataValid = valid;
@@ -7,4 +7,6 @@ export default function registerDatasetValid(el) {
       return this.dataValid;
     }
   });
-}
+};
+
+export default registerDatasetValid;

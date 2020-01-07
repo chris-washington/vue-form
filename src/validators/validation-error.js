@@ -1,4 +1,4 @@
-export default async function getValidationErrorIfPresent(validator, value) {
+const getValidationErrorIfPresent = async (validator, value) => {
   let result = validator.validate(value);
 
   if (Promise.resolve(result) === result) {
@@ -14,4 +14,6 @@ export default async function getValidationErrorIfPresent(validator, value) {
   }
 
   return undefined;
-}
+};
+
+export default getValidationErrorIfPresent;

@@ -1,4 +1,4 @@
-export default function registerDirty(el) {
+const registerDirty = el => {
   Object.defineProperty(el, "isDirty", {
     set(dirty) {
       this.dirty = dirty;
@@ -13,4 +13,6 @@ export default function registerDirty(el) {
       return this.dirty;
     }
   });
-}
+};
+
+export default registerDirty;

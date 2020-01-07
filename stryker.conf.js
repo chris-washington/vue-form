@@ -7,7 +7,7 @@ module.exports = function asyncConfig(config) {
     testRunner: "jest",
     jest: {
       // eslint-disable-next-line global-require
-      config: require("./jest.config.js")
+      config: require("./jest.stryker.config.js")
     },
     reporters: ["progress", "clear-text", "html"],
     coverageAnalysis: "off"

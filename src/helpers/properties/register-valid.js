@@ -1,7 +1,8 @@
-export default function registerValid(el) {
+const registerValid = el => {
   Object.defineProperty(el, "isValid", {
     set(valid) {
       this.valid = valid;
+
       if (valid) {
         this.setAttribute("valid", "");
         this.removeAttribute("invalid");
@@ -16,4 +17,6 @@ export default function registerValid(el) {
       return this.valid;
     }
   });
-}
+};
+
+export default registerValid;

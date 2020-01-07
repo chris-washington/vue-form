@@ -103,7 +103,7 @@
           value="false"
           /> <span>No</span>
       <p class="hint">
-        <span class="errors" v-if="agreeError">{{agreeError}}</span>
+        <span class="errors" v-if="receiveEmailError">{{receiveEmailError}}</span>
         <span v-else>Hint: Must check the box to continue.</span>
       </p>
     </div>

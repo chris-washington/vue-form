@@ -24,3 +24,11 @@ export const throwIfNotTrue = (value, error) => {
 
 export const isValidRange = value =>
   Array.isArray(value) && isNumber(value[0]) && isNumber(value[1]);
+
+export const unsubscribeElement = el => {
+  if (!isNil(el.eventSubscriptions) && el.eventSubscriptions.length > 0) {
+    for (let i = el.eventSubscriptions.length; i--; ) {
+      el.eventSubscriptions[i].unsubscribe();
+    }
+  }
+};

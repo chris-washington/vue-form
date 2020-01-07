@@ -1,6 +1,6 @@
 import { isNil } from "lodash-es";
 
-export default function getModelDirective(vnode) {
+const getModelDirective = vnode => {
   if (!isNil(vnode.data) && !isNil(vnode.data.directives)) {
     const model = vnode.data.directives.find(directive => directive.name === "model");
 
@@ -14,4 +14,6 @@ export default function getModelDirective(vnode) {
   }
 
   return undefined;
-}
+};
+
+export default getModelDirective;

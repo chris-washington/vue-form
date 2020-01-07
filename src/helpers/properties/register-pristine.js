@@ -1,4 +1,4 @@
-export default function registerPristine(el) {
+const registerPristine = el => {
   Object.defineProperty(el, "isPristine", {
     set(pristine) {
       this.pristine = pristine;
@@ -13,4 +13,6 @@ export default function registerPristine(el) {
       return this.pristine;
     }
   });
-}
+};
+
+export default registerPristine;

@@ -1,7 +1,9 @@
-export default function registerFields(el) {
+const registerFields = el => {
   Object.defineProperty(el, "fields", {
     get() {
       return Array.from(this.querySelectorAll("[data-form-field"));
     }
   });
-}
+};
+
+export default registerFields;

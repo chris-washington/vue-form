@@ -15,7 +15,7 @@ export default class VueFormHandler {
   async handleClearForm(doClearForm) {
     if (doClearForm) {
       let errors = {};
-      for (let i = 0, { length } = this.el.fields; i < length; i += 1) {
+      for (let i = this.el.fields.length; i--; ) {
         const field = this.el.fields[i];
         unset(this.component, field.dataset.dataName);
         // eslint-disable-next-line no-await-in-loop

@@ -1,4 +1,4 @@
-export default function registerInvalid(el) {
+const registerInvalid = el => {
   Object.defineProperty(el, "isInvalid", {
     set(valid) {
       this.inValid = valid;
@@ -12,4 +12,6 @@ export default function registerInvalid(el) {
       return this.inValid;
     }
   });
-}
+};
+
+export default registerInvalid;

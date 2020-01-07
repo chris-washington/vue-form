@@ -36,9 +36,7 @@ export default class FormAttributesHandler {
   setFormValidity() {
     let isValid = true;
     const errorKeys = Object.keys(this.formErrors);
-    const { length } = errorKeys;
-
-    for (let i = 0; i < length; i += 1) {
+    for (let i = errorKeys.length; i--; ) {
       const errorKey = errorKeys[i];
       const error = this.formErrors[errorKey];
 

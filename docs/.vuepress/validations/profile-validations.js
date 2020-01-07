@@ -57,7 +57,7 @@ export default {
     {
       type: VueFormValidatorTypes.REQUIRED,
       validation: true,
-      message: 'You must check the box to proceed'
+      message: 'Please select how you heard about us.'
     }
   ],
   receiveEmail: [
