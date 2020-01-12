@@ -1,4 +1,4 @@
-import { inRange } from "lodash-es";
+import { isFinite, toNumber } from "lodash-es";
 import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
@@ -13,8 +13,8 @@ export default class VueRxMinValidator extends BaseValidator {
   }
 
   validate(value) {
-    const numberValue = Number(value);
-    return typeof numberValue === "number" && inRange(numberValue, this.validationValue, Infinity);
+    const numberValue = toNumber(value);
+    return isFinite(numberValue) && numberValue >= this.validationValue;
   }
 
   getMessage() {

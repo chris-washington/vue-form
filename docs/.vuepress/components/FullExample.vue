@@ -16,6 +16,7 @@
     <div class="input-block">
       <label for="profile.password">Password*</label>
       <input
+        active-error
         name="profile.password"
         type="password"
         v-model="profile.password"

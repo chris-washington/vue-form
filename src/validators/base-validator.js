@@ -18,7 +18,7 @@ export default class BaseValidator {
   constructor(type, validationValue, message, validationValueRequired = true) {
     if (validationValueRequired && isNil(validationValue)) {
       throw new Error(
-        `You must provide a validationValue to validate by for the ${this.name} validator`
+        `You must provide a 'validation' property to validate against for the ${this.constructor.name} validator`
       );
     }
 
@@ -26,8 +26,8 @@ export default class BaseValidator {
     this.message = message;
 
     Object.defineProperty(this, "type", {
-      get: () => type,
-      configurable: true
+      value: type,
+      writable: false
     });
   }
 
@@ -37,13 +37,13 @@ export default class BaseValidator {
    * @throws Will throw a no implementation error, if not overwritten
    */
   validate() {
-    throw new Error(`You have to implement the method validate form ${this.constructor.name}`);
+    throw new Error(`You have to implement the method "validate" for ${this.constructor.name}`);
   }
 
   /**
    * Returns the specific message when a validation fails
    */
   getMessage() {
-    throw new Error(`You have to implement the method getMessage for ${this.constructor.name}`);
+    throw new Error(`You have to implement the method "getMessage" for ${this.constructor.name}`);
   }
 }

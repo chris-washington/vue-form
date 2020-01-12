@@ -3,15 +3,16 @@ import { isNil, get } from "lodash-es";
 const registerFieldErrors = (el, name) => {
   Object.defineProperty(el, "errors", {
     get() {
-      if (!this.fieldErrors) {
-        this.fieldErrors[name] = undefined;
+      if (!this._fieldErrors) {
+        this._fieldErrors = {};
+        this._fieldErrors[name] = undefined;
       }
 
-      return this.fieldErrors;
+      return this._fieldErrors;
     },
     set(errors) {
-      this.fieldErrors = errors;
-      this.hasErrors = !isNil(get(this.fieldErrors, this.name));
+      this._fieldErrors = errors;
+      this.hasErrors = !isNil(get(this._fieldErrors, this.name));
       this.isDataValid = !this.hasErrors;
     }
   });

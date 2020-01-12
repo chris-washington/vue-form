@@ -1,3 +1,4 @@
+import { isString } from "lodash-es";
 import validatorTypes from "./validator-types";
 import VueRxRequiredValidator from "./required-validator";
 import VueRxMinLengthValidator from "./min-length-validator";
@@ -13,7 +14,7 @@ export default class VueRxFormValidator {
   static TYPES = validatorTypes;
 
   static createValidator(type, message, validationValue, options) {
-    if (typeof type === "string") {
+    if (isString(type)) {
       switch (type) {
         case VueRxFormValidator.TYPES.REQUIRED:
           return new VueRxRequiredValidator(validationValue, message);

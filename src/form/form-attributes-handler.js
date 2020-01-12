@@ -37,8 +37,7 @@ export default class FormAttributesHandler {
     let isValid = true;
     const errorKeys = Object.keys(this.formErrors);
     for (let i = errorKeys.length; i--; ) {
-      const errorKey = errorKeys[i];
-      const error = this.formErrors[errorKey];
+      const error = this.formErrors[errorKeys[i]];
 
       if (!isNil(error)) {
         isValid = false;

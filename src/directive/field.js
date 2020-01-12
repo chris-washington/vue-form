@@ -4,10 +4,13 @@ import { isNil, set } from "lodash-es";
 import registerGlobal from "../helpers/properties/register-global";
 import registerDatasetValid from "../helpers/properties/register-dataset-valid";
 
-import getModelDirective from "../helpers/utils/get-model-directive";
 import registerInvalid from "../helpers/properties/register-invalid";
 
-import { unsubscribeElement } from "../helpers/utils/operations";
+import {
+  removeSubscriptions,
+  addSubscription,
+  getModelDirective
+} from "../helpers/utils/operations";
 
 export default {
   bind(el, binding, vnode) {
@@ -15,7 +18,6 @@ export default {
     if (arg && arg === "inputEvent") {
       set(el.dataset, "inputEvent", value);
     }
-    set(el, "eventSubscriptions", []);
 
     registerGlobal(el);
     registerDatasetValid(el);
@@ -30,14 +32,14 @@ export default {
     }
   },
   inserted(el, binding, vnode) {
-    const inputEvent = el.form.dataset.inputEvent || "input";
+    const inputEvent = el.dataset.inputEvent || el.form.dataset.inputEvent || "input";
 
     const modelDirective = getModelDirective(vnode);
 
     if (!isNil(modelDirective)) {
       set(vnode.elm, "value", modelDirective.value);
       if (inputEvent !== "input") {
-        el.eventSubscriptions.push(
+        addSubscription(
           fromEvent(vnode.elm, inputEvent).subscribe(event =>
             vnode.data.model.callback(event.detail)
           )
@@ -52,6 +54,6 @@ export default {
     }
   },
   unbind(el) {
-    unsubscribeElement(el);
+    removeSubscriptions(el);
   }
 };

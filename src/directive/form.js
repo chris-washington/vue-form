@@ -2,7 +2,7 @@ import { set } from "lodash-es";
 import VueFormHandler from "../form/form-handler";
 import registerGlobal from "../helpers/properties/register-global";
 import registerFields from "../helpers/properties/register-fields";
-import { unsubscribeElement } from "../helpers/utils/operations";
+import { removeSubscriptions } from "../helpers/utils/operations";
 
 export default {
   bind(el, binding) {
@@ -28,6 +28,6 @@ export default {
     }
   },
   unbind(el) {
-    unsubscribeElement(el);
+    removeSubscriptions(el);
   }
 };

@@ -1,10 +1,10 @@
 const registerDatasetValid = el => {
   Object.defineProperty(el, "isDataValid", {
     set(valid) {
-      this.dataValid = valid;
+      this._dataValid = valid;
     },
     get() {
-      return this.dataValid;
+      return this._dataValid;
     }
   });
 };

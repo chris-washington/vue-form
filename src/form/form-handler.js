@@ -1,6 +1,6 @@
 import { unset } from "lodash-es";
 
-import addSubscription from "../helpers/utils/add-subscription";
+import { addSubscription } from "../helpers/utils/operations";
 
 import FormAttributesHandler from "./form-attributes-handler";
 

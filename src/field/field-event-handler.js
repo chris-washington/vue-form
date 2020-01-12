@@ -1,6 +1,6 @@
 import { fromEvent } from "rxjs";
 import { isNil, get } from "lodash-es";
-import addSubscription from "../helpers/utils/add-subscription";
+import { addSubscription } from "../helpers/utils/operations";
 import FieldAttributeHandler from "./field-attribute-handler";
 
 export default class FieldEventHandler {
@@ -33,7 +33,6 @@ export default class FieldEventHandler {
   handleEvent(event) {
     return new Promise(resolve => {
       setTimeout(async () => {
-        await this.fieldValidator.validatorInfo.component.$nextTick();
         event.preventDefault();
         const errors = await this.fieldValidator.validate();
         const { name } = this;

@@ -1,4 +1,4 @@
-import { isNil, uniqBy, get } from "lodash-es";
+import { isNil, uniqBy, get, isBoolean } from "lodash-es";
 import VueRxFormValidator from "../validators";
 
 import getValidationErrorIfPresent from "../validators/validation-error";
@@ -68,7 +68,7 @@ export default class FieldValidator {
   getTrimmedValue(value) {
     let trimmedValue;
 
-    if (typeof value !== "boolean") {
+    if (!isBoolean(value)) {
       trimmedValue = value.trim();
     }
 

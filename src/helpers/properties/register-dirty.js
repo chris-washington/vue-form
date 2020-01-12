@@ -1,7 +1,7 @@
 const registerDirty = el => {
   Object.defineProperty(el, "isDirty", {
     set(dirty) {
-      this.dirty = dirty;
+      this._dirty = dirty;
 
       if (dirty) {
         this.setAttribute("dirty", "");
@@ -10,7 +10,7 @@ const registerDirty = el => {
       }
     },
     get() {
-      return this.dirty;
+      return this._dirty;
     }
   });
 };
