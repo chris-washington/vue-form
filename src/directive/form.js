@@ -1,18 +1,12 @@
-import { set } from "lodash-es";
 import VueFormHandler from "../form/form-handler";
 import registerGlobal from "../helpers/properties/register-global";
 import registerFields from "../helpers/properties/register-fields";
+import registerForm from "../helpers/properties/register-form";
 import { removeSubscriptions } from "../helpers/utils/operations";
 
 export default {
   bind(el, binding) {
-    const { arg, value } = binding;
-    if (arg && arg === "inputEvent") {
-      set(el.dataset, "inputEvent", value);
-    } else {
-      set(el, "eventSubscriptions", []);
-      el.setAttribute("novalidate", "");
-    }
+    registerForm(el, binding);
   },
   inserted(el, binding, vnode) {
     const { arg, expression } = binding;
