@@ -6,7 +6,6 @@ import FieldAttributeHandler from "./field-attribute-handler";
 export default class FieldEventHandler {
   constructor(el, fieldEvents, fieldValidator) {
     this.el = el;
-
     this.name = el.dataset.formField;
     const inputEvent = this.el.dataset.inputEvent || fieldEvents.inputEvent;
     this.bindInputEvent(inputEvent);

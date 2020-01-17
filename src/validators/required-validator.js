@@ -5,19 +5,13 @@ import { isInclusiveEmpty } from "../helpers/utils/operations";
 
 export default class VueRxRequiredValidator extends BaseValidator {
   constructor(validationValue, message) {
-    super(
-      validatorTypes.REQUIRED,
-      validationValue,
-      message || defaultErrorMessages.required,
-      false
-    );
+    super(validatorTypes.REQUIRED, validationValue, message || defaultErrorMessages.required);
   }
 
   // eslint-disable-next-line class-methods-use-this
   validate(value) {
     const empty = isInclusiveEmpty(value);
-
-    return !this.validationValue && !empty ? true : !empty;
+    return !this.validationValue === empty || !empty;
   }
 
   getMessage() {

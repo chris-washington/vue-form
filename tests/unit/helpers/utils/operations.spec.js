@@ -4,7 +4,8 @@ import {
   isValidRange,
   throwIfNotTrue,
   isInclusiveEmpty,
-  getModelDirective
+  getModelDirective,
+  constructValidationMessage
 } from "@/helpers/utils/operations";
 
 describe("helpers/utils/operations.js", () => {
@@ -15,6 +16,27 @@ describe("helpers/utils/operations.js", () => {
     jest.resetAllMocks();
   });
 
+  describe("when constructValidationMessage is called", () => {
+    describe("when result is true", () => {
+      it("Then no error message is returned", () => {
+        expect(constructValidationMessage(true)).toBeUndefined();
+      });
+    });
+
+    describe("when result is false", () => {
+      it("Then no error message is returned", () => {
+        const type = "myType";
+        const message = "my message";
+        const getMessage = () => message;
+
+        const validator = { type, getMessage };
+        const error = {};
+        error[type] = message;
+        expect(constructValidationMessage(false, validator)).toEqual(error);
+      });
+    });
+  });
+
   describe("When getModelDirective is called", () => {
     let vnode;
     beforeEach(() => {
@@ -22,13 +44,13 @@ describe("helpers/utils/operations.js", () => {
     });
 
     describe("and vnode.data is nil", () => {
-      it("Then undefined is returned", () => {
+      it("Then an empty object is returned", () => {
         expect(getModelDirective(vnode)).toBeUndefined();
       });
     });
 
     describe("and vnode.data.directives and vnode.data.model is nil", () => {
-      it("then undefined is returned", () => {
+      it("Then an empty object is returned", () => {
         vnode.data = {};
         expect(getModelDirective(vnode)).toBeUndefined();
       });

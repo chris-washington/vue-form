@@ -36,7 +36,7 @@ export default class VueForm {
     this.initSubject = new BehaviorSubject();
     this.validators = {};
     this.errors = {};
-    this.clearForSubject = new BehaviorSubject();
+    this.clearFormSubject = new BehaviorSubject();
   }
 
   /**
@@ -119,14 +119,14 @@ export default class VueForm {
    * state.
    */
   clearForm() {
-    this.clearForSubject.next(true);
+    this.clearFormSubject.next(true);
   }
 
   /**
    * @private
    */
   getClearFormObservable() {
-    return this.clearForSubject.asObservable();
+    return this.clearFormSubject.asObservable();
   }
 
   /**

@@ -41,3 +41,15 @@ export const getModelDirective = vnode => {
   }
   return undefined;
 };
+
+export const constructValidationMessage = (result, validator) => {
+  if (result === false) {
+    const { type } = validator;
+    const message = validator.getMessage();
+    const error = {};
+    error[type] = message;
+    return error;
+  }
+
+  return undefined;
+};

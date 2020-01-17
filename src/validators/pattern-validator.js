@@ -8,9 +8,7 @@ export default class VueRxPatternValidator extends BaseValidator {
   }
 
   validate(value) {
-    return this.validationValue instanceof RegExp
-      ? this.validationValue.test(value)
-      : new RegExp(this.validationValue).test(value);
+    return String(value).match(this.validationValue);
   }
 
   getMessage() {

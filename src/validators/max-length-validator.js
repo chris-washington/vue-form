@@ -1,4 +1,4 @@
-import { inRange, isNil } from "lodash-es";
+import { isNil } from "lodash-es";
 import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
@@ -13,7 +13,7 @@ export default class VueRxMaxLengthValidator extends BaseValidator {
   }
 
   validate(value) {
-    return isNil(value) || inRange(value.length, 0, this.validationValue);
+    return isNil(value) || value.length <= this.validationValue;
   }
 
   getMessage() {

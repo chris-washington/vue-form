@@ -13,6 +13,7 @@ import registerCustomInput from "../helpers/properties/register-custom-input";
 
 export default {
   bind(el, binding, vnode) {
+    console.dir(el);
     const { arg, value } = binding;
 
     registerInputEvent(el, arg, value);

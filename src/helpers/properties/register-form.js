@@ -1,10 +1,8 @@
-import { set } from "lodash-es";
+import registerInputEvent from "./register-input-event";
 
 const registerForm = (el, binding) => {
   const { arg, value } = binding;
-  if (arg && arg === "inputEvent") {
-    set(el.dataset, "inputEvent", value);
-  } else {
+  if (!registerInputEvent(el, arg, value)) {
     el.setAttribute("novalidate", "");
   }
 };

@@ -36,15 +36,13 @@ export default class VueRxFormValidator {
           throw new Error(`Unsupported validator type: ${type}`);
       }
     }
-    const Type = type;
-    const customValidator = new Type(message);
 
-    if (customValidator instanceof VueFormCustomValidator) {
-      return new Type(message, options);
+    if (type.prototype instanceof VueFormCustomValidator) {
+      return new type(message, options);
     }
 
     throw new Error(
-      `Unsupported custom validator type. Must extend VueFormCustomValidator: ${type}`
+      `Unsupported custom validator type. Must extend VueFormCustomValidator: ${type.toString()}`
     );
   }
 }

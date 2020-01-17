@@ -11,7 +11,7 @@ export default class VueRxRangeValidator extends BaseValidator {
       `${validationValue.toString()} is not a proper range array.`
     );
     super(
-      validatorTypes.MAX_LENGTH,
+      validatorTypes.RANGE,
       validationValue,
       message || `${defaultErrorMessages.range} ${validationValue[0]} and ${validationValue[1]}.`
     );
@@ -19,9 +19,9 @@ export default class VueRxRangeValidator extends BaseValidator {
 
   validate(value) {
     const min = this.validationValue[0];
-    const max = this.validationValue[1];
+    const max = this.validationValue[1] + 1;
 
-    return value && inRange(value.length, min, max);
+    return inRange(value, min, max);
   }
 
   getMessage() {

@@ -1,5 +1,5 @@
 import { inRange } from "lodash-es";
-import { isValidRange, throwIfNotTrue } from "../helpers/utils/operations";
+import { isValidRange, throwIfNotTrue, isInclusiveEmpty } from "../helpers/utils/operations";
 import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
@@ -12,7 +12,7 @@ export default class VueRxRangeLengthValidator extends BaseValidator {
     );
 
     super(
-      validatorTypes.MAX_LENGTH,
+      validatorTypes.RANGE_LENGTH,
       validationValue,
       message ||
         `${defaultErrorMessages.rangeLength} ${validationValue[0]} and ${validationValue[1]}.`
@@ -21,9 +21,11 @@ export default class VueRxRangeLengthValidator extends BaseValidator {
 
   validate(value) {
     const min = this.validationValue[0];
-    const max = this.validationValue[1];
+    const max = this.validationValue[1] + 1;
+    const empty = isInclusiveEmpty(value);
+    if (empty) return false;
 
-    return value && inRange(value.length, min, max);
+    return inRange(value.length, min, max);
   }
 
   getMessage() {
