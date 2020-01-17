@@ -11,7 +11,7 @@
     "build:babel:docs": "del dist-babel && babel src --out-dir dist-babel --ignore src/main.js --plugins=@babel/plugin-proposal-class-properties",
     "docs:build": "npm run build:babel:docs && npm run api:build && vuepress build docs",
     "stryker": "cross-env VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run",
-    "test": "vue-cli-service test:unit"
+    "test": "npm run test:unit && npm run stryker"
   },
   "main": "dist/index.js",
   "browser": "dist/vueForm.umd.js",
