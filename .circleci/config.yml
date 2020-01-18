@@ -16,9 +16,9 @@ jobs:
       - checkout
 
       - restore_cache:
-          keys:
+        keys:
           - v1-dependencies-{{ checksum "package.json" }}
-	  # fallback to using the latest cache if no exact match is found
+    # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run: npm install
@@ -89,3 +89,4 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+
