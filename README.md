@@ -1,34 +1,16 @@
 # Vue Form [![CircleCI](https://circleci.com/gh/chris-washington/vue-form.svg?style=svg&circle-token=066ba0656ce61d9cbe44c6fa66c57ac42cfceb16)](https://circleci.com/gh/chris-washington/vue-form)
 
-## Project setup
+## Installation
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm i vue-form@1.0.0-alpha.1
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Quick start
 
-### Run your unit tests
-```
-npm run test:unit
-```
+For a Guide, including a Getting Started guide, please head over to [guides](https://chris-washington.github.io/vue-form) section of the documentation.
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Contributing
+During the alpha phase there could be some major refactors of code. As a result, at this time please submit an issue only and not a pull request. 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+We will start accepting pull requests once we move into the beta phase.

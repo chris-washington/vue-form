@@ -4,7 +4,7 @@ module.exports = (options, context) => ({
   title: 'Vue Form',
   description: 'Simplify form validations and handling with Vue Form',
   base: process.env.NODE_ENV === 'production'
-    ? '/chris-washington/vue-form/'
+    ? '/vue-form/'
     : '/',
   isPlayAllHeaders: true,
   activeHeaderLinks: true,
