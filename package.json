@@ -22,7 +22,6 @@
     "./dist/vueForm.common.js.map"
   ],
   "dependencies": {
-    "@c1/gravity-wc": "^1.0.2",
     "core-js": "^3.4.3",
     "lodash-es": "^4.17.15",
     "rxjs": "^6.5.3",
@@ -42,7 +41,6 @@
     "@stryker-mutator/vue-mutator": "^2.4.0",
     "@stryker-mutator/webpack-transpiler": "^2.4.0",
     "@vue/cli-plugin-babel": "^4.1.2",
-    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.2",
     "@vue/cli-plugin-unit-jest": "^4.1.2",
     "@vue/cli-service": "^4.1.0",
