@@ -1,8 +1,8 @@
-# Vue Form [![CircleCI](https://circleci.com/gh/chris-washington/vue-form.svg?style=svg&circle-token=066ba0656ce61d9cbe44c6fa66c57ac42cfceb16)](https://circleci.com/gh/chris-washington/vue-form)
+# Vue Form
 
 ## Installation
 ```
-npm i vue-form@1.0.0-alpha.1
+npm i vue-form
 ```
 
 ### Quick start
