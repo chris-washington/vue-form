@@ -59,7 +59,6 @@ jobs:
       - run:
           name: Configure docs dependencies
           command: |
-            npm install -g --silent gh-pages
             git config user.email "chriswashington@remnantrva.com"
             git config user.name "chris-washington"
       - add_ssh_keys:
@@ -67,7 +66,7 @@ jobs:
             - "70:9c:8c:ed:0c:d4:b7:3d:e6:eb:37:c6:05:7e:f2:fd"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/.vuepress/dist
+          command: npx gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/.vuepress/dist
 workflows:
   version: 2
   test_deploy_docs:
