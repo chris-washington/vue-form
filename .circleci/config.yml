@@ -62,8 +62,8 @@ jobs:
       - run:
           name: Deploy docs to gh-pages branch
           command: |
-            git config user.email "chriswashington@remnantrva.com"
-            git config user.name "chris-washington"
+            git config --global user.email "chriswashington@remnantrva.com"
+            git config --global user.name "chris-washington"
             cd docs/.vuepress/dist
             git init
             git add -A
