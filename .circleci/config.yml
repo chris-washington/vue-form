@@ -52,6 +52,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
+          at: ~/repo
       - run:
           name: Build docs
           command: npm run docs:build
