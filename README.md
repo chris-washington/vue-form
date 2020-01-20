@@ -1,4 +1,4 @@
-# Vue Form
+# VRx Form
 
 ## Installation
 ```

@@ -13,7 +13,7 @@ The following is a full example with the more widely used components
 
 ## Example code
 
-The example above consists of 3 files that contain a custom validator, validations file, and a vue component to house the form. The hope is that this example will cover most use cases for how to use the vue form package well.
+The example above consists of 3 files that contain a custom validator, validations file, and a vue component to house the form. The hope is that this example will cover most use cases for how to use the VRx Form package well.
 
 ### Custom Validator
 

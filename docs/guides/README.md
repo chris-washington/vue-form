@@ -3,10 +3,10 @@ title: Getting Started
 lang: en-US
 ---
 
-# Vue Form<Badge text="beta" type="warning"/> Getting Started 
+# VRx Form<Badge text="beta" type="warning"/> Getting Started 
 
 ## Overview
-Vue Form seeks to be a simple abstraction layer for form validation and form event handling. Vue Form had 5 goals in development:
+VRx Form seeks to be a simple abstraction layer for form validation and form event handling. VRx Form had 5 goals in development:
 
 * Needed to work with the existing `v-model` directive (and enforce it)
 * Minimal directives for developers to remember
@@ -24,7 +24,7 @@ npm i vrx-form
 
 ## Setup
 
-Vue Form comes in the form of a plugin:
+VRx Form comes in the form of a plugin:
 
 ```js
 import Vue from 'vue';
@@ -35,7 +35,7 @@ Vue.use(VRXForm);
 
 ## Quick start
 
-Once the plugin is installed, VRXForm objects can be created in a component. Below, is a step by step guide for creating a new form with Vue form validations. For the purposes of the quick start guide, it will walk through creating a message form.
+Once the plugin is installed, VRXForm objects can be created in a component. Below, is a step by step guide for creating a new form with VRx Form validations. For the purposes of the quick start guide, it will walk through creating a message form.
 
 ### Form creation
 First, create the form and add the `v-form` directive:
@@ -104,10 +104,10 @@ All fields must be within a `v-form` form element. Each field used for validatio
 
 ### Validation initialization
 
-After the Vue form is created and potentially the data being retrieved, for instance, when editing, the form needs to begin the data initialization process by setting the validators. 
+After the VRx Form is created and potentially the data being retrieved, for instance, when editing, the form needs to begin the data initialization process by setting the validators. 
 
 #### Set the validations
-Next, when initializing, the validations must be set before Vue form will validate:
+Next, when initializing, the validations must be set before VRx Form will validate:
 
 ```vue{30-35}
 <template>
@@ -268,7 +268,7 @@ At this point validation can happen on a given form. But this isn't very useful 
 
 ### Show errors
 
-As validation happens, Vue form is continually checking to see if the fields in the form are valid. As it does this, it is compiling errors in the `errors` object on every Vue Form object. In the case of this walk through `this.messageForm.errors`.
+As validation happens, VRx Form is continually checking to see if the fields in the form are valid. As it does this, it is compiling errors in the `errors` object on every VRx Form object. In the case of this walk through `this.messageForm.errors`.
 
 To view those errors create a computed method to retrieve the error and create a div to show the error when present:
 

@@ -5,7 +5,7 @@ lang: en-US
 
 # Validator setup
 
-Vue form ships with many validators. The following sections walk through each one and how to use them. This includes custom validators.
+VRx Form ships with many validators. The following sections walk through each one and how to use them. This includes custom validators.
 
 ## Required validator
 The required validator ensures that a field is either marked required (meaning some text or selection must be present) or not.

@@ -50,7 +50,7 @@ This is done by passing in an argument to `v-form-field` named `inputEvent` like
 </script>
 ```
 
-The above highlighted code tells Vue form to listen to events named `my-input-event` only for that particular field. This will also help `v-model` know how to set the value properly (which has been a limitation of `v-model` in the past).
+The above highlighted code tells VRx Form to listen to events named `my-input-event` only for that particular field. This will also help `v-model` know how to set the value properly (which has been a limitation of `v-model` in the past).
 
 ## Active error
 

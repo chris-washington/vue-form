@@ -5,11 +5,11 @@ lang: en-US
 
 ## Accessing errors
 
-One of the more powerful features of Vue form is automatic error population. As a field that has the v-form-field is interacted with, if erroneous error messages will begin to populate when the field is blurred (clicked away from) unless the field has the attribute [active-error](fields.html#active-error)).
+One of the more powerful features of VRx Form is automatic error population. As a field that has the v-form-field is interacted with, if erroneous error messages will begin to populate when the field is blurred (clicked away from) unless the field has the attribute [active-error](fields.html#active-error)).
 
 As errors populate, they will be placed under the [VRXForm](/api/#vueform) objects: `<VRXForm>.errors[<name-of-field>].<error-name>`.
 
-For instance, if a vue form is created on the data variable `myForm` and it has a field named `myInput` and that has 2 validators `PATTERN` and `MIN_LENGTH`, they can be accessed in the following ways:
+For instance, if a VRx Form is created on the data variable `myForm` and it has a field named `myInput` and that has 2 validators `PATTERN` and `MIN_LENGTH`, they can be accessed in the following ways:
 
 ```js
 // gets pattern error

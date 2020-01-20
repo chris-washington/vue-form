@@ -55,7 +55,7 @@ This is done by declaring a second `v-form` directive in an argument named `inpu
 </script>
 ```
 
-The above highlighted code tells Vue form to listen to events named `my-input-event` for the entire form. This will also help `v-model` know how to set the value properly (which has been a limitation of `v-model` in the past).
+The above highlighted code tells VRx Form to listen to events named `my-input-event` for the entire form. This will also help `v-model` know how to set the value properly (which has been a limitation of `v-model` in the past).
 
 ::: tip
 If you need to override a specific field's input event you can do so as explained [here](fields.html#custom-input-events).
