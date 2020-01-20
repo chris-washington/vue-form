@@ -86,7 +86,7 @@ workflows:
               only: master
       - docs:
           requires:
-            - deploy
+            - test
           filters:
             tags:
               only: /^v.*/
