@@ -2,11 +2,11 @@ import { BehaviorSubject } from "rxjs";
 import { has } from "lodash-es";
 
 /**
- * @module VueForm
+ * @module VRXForm
  * @class
  * @classdesc Used to create a form object to do validation
  */
-export default class VueForm {
+export default class VRXForm {
   /**
    * Creates a form object that can do validations
    *
@@ -22,12 +22,12 @@ export default class VueForm {
    *
    * @example
    * // can also import
-   * import { VueForm } from 'vue-form'
+   * import { VRXForm } from 'vrx-form'
    *
    * export default {
    *    data() {
    *      return {
-   *        myForm: new VueForm(),
+   *        myForm: new VRXForm(),
    *      }
    *    }
    * }
@@ -105,8 +105,8 @@ export default class VueForm {
    * Sets the validators that will validate the fields. Once {@link init}
    * is called this can no longer be set.
    *
-   * @param {...VueFormDataValidator} validators - the validators to validate each field.
-   * @returns {VueForm} - returns self for chaining.
+   * @param {...VRXFormDataValidator} validators - the validators to validate each field.
+   * @returns {VRXForm} - returns self for chaining.
    */
   setValidations(validators) {
     this.validators = validators;
@@ -147,7 +147,7 @@ export default class VueForm {
 
   /**
    * Returns the current validator object.
-   * @returns {...VueFormDataValidator}
+   * @returns {...VRXFormDataValidator}
    */
   getValidators() {
     return this.validators;
@@ -156,8 +156,8 @@ export default class VueForm {
 
 /**
  * Defines a validation for a field
- * @typedef {Object} VueFormValidator
- * @property {VueFormValidatorTypes|VueFormCustomValidator} type - The type of validation to be done
+ * @typedef {Object} VRXFormValidator
+ * @property {VRXFormValidatorTypes|VRXFormCustomValidator} type - The type of validation to be done
  * @property {string|number} validation - a number or string to validate against.
  * @property {string} message - what to include in errors if the validation fails.
  */

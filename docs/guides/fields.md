@@ -77,7 +77,7 @@ To take advantage of this feature just add `active-error` to the field:
   </form>
 </template>
 <script>
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 export default {
   name: 'HelloForm',
   data() {
@@ -93,7 +93,7 @@ export default {
     this.messageForm
       .setValidations({
         'note': [{
-          type: VueFormValidatorTypes.MIN_LENGTH,
+          type: VRXFormValidatorTypes.MIN_LENGTH,
           validation: 8,
           message: 'Not enough characters. Needs to be at least 8',
         }],

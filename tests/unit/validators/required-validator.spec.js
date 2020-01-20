@@ -1,4 +1,4 @@
-import VueRxRequiredLengthValidator from "@/validators/required-validator";
+import VRXRequiredLengthValidator from "@/validators/required-validator";
 
 describe("validators/required-validator.js", () => {
   describe("When initialized", () => {
@@ -9,7 +9,7 @@ describe("validators/required-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxRequiredLengthValidator(validationValue);
+        validator = new VRXRequiredLengthValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -20,7 +20,7 @@ describe("validators/required-validator.js", () => {
     describe("and required is true", () => {
       beforeEach(() => {
         validationValue = true;
-        validator = new VueRxRequiredLengthValidator(validationValue);
+        validator = new VRXRequiredLengthValidator(validationValue);
       });
 
       it("then all returns true", () => {
@@ -38,7 +38,7 @@ describe("validators/required-validator.js", () => {
     describe("and required is false", () => {
       beforeEach(() => {
         validationValue = false;
-        validator = new VueRxRequiredLengthValidator(validationValue);
+        validator = new VRXRequiredLengthValidator(validationValue);
       });
 
       it("then all returns true", () => {
@@ -55,7 +55,7 @@ describe("validators/required-validator.js", () => {
 
     describe("and custom message is used", () => {
       beforeEach(() => {
-        validator = new VueRxRequiredLengthValidator(validationValue, message);
+        validator = new VRXRequiredLengthValidator(validationValue, message);
       });
 
       it("then the message is equal to the intialized message", () => {

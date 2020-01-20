@@ -1,4 +1,4 @@
-import VueRxMaxValidator from "@/validators/max-validator";
+import VRXMaxValidator from "@/validators/max-validator";
 
 describe("validators/max-validator.js", () => {
   describe("When initialized", () => {
@@ -7,7 +7,7 @@ describe("validators/max-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxMaxValidator(validationValue);
+        validator = new VRXMaxValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -22,7 +22,7 @@ describe("validators/max-validator.js", () => {
       const message = "my message";
 
       beforeEach(() => {
-        validator = new VueRxMaxValidator(validationValue, message);
+        validator = new VRXMaxValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

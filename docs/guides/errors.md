@@ -7,16 +7,16 @@ lang: en-US
 
 One of the more powerful features of Vue form is automatic error population. As a field that has the v-form-field is interacted with, if erroneous error messages will begin to populate when the field is blurred (clicked away from) unless the field has the attribute [active-error](fields.html#active-error)).
 
-As errors populate, they will be placed under the [VueForm](/api/#vueform) objects: `<VueForm>.errors[<name-of-field>].<error-name>`.
+As errors populate, they will be placed under the [VRXForm](/api/#vueform) objects: `<VRXForm>.errors[<name-of-field>].<error-name>`.
 
 For instance, if a vue form is created on the data variable `myForm` and it has a field named `myInput` and that has 2 validators `PATTERN` and `MIN_LENGTH`, they can be accessed in the following ways:
 
 ```js
 // gets pattern error
-this.myForm.errors.myInput[VueFormValidatorTypes.PATTERN];
+this.myForm.errors.myInput[VRXFormValidatorTypes.PATTERN];
 
 // gets minLength error
-this.myForm.errors.myInput[VueFormValidatorTypes.MIN_LENGTH];
+this.myForm.errors.myInput[VRXFormValidatorTypes.MIN_LENGTH];
 ```
 
 ::: danger FATAL
@@ -27,7 +27,7 @@ You should always check for the errors existence before accessing it:
 
 ```js
 const patternError = this.myForm.errors.myInput 
-              ? this.myForm.errors.myInput[VueFormValidatorTypes.PATTERN] : null;
+              ? this.myForm.errors.myInput[VRXFormValidatorTypes.PATTERN] : null;
 ```
 
 
@@ -38,7 +38,7 @@ When you create a custom validator the first argument in the super call is the t
 ```js{6}
 import axios from 'Axios';
 
-class TeamExistsValidator extends VueFormCustomValidator {
+class TeamExistsValidator extends VRXFormCustomValidator {
   constructor(message, options) {
     // must make super call. Options are optional
     super('teamExists', message || 'This team already exists, please choose another one.', options);
@@ -54,7 +54,7 @@ class TeamExistsValidator extends VueFormCustomValidator {
 }
 ```
 
-Would be accessed like this: `<VueForm>.errors.<fieldName>.teamExists`.
+Would be accessed like this: `<VRXForm>.errors.<fieldName>.teamExists`.
 
 ## Priority message
 
@@ -70,17 +70,17 @@ For instance if a field has 3 validators:
 
 ```js
 {
-  type: VueFormValidatorTypes.REQUIRED,
+  type: VRXFormValidatorTypes.REQUIRED,
   validation: true,
   message: 'Please enter something in this field'
 },
 {
-  type: VueFormValidatorTypes.PATTERN,
+  type: VRXFormValidatorTypes.PATTERN,
   validation: /^(new|New)/,
   message: 'Should begin with new or New',
 },
 {
-  type: VueFormValidatorTypes.MIN_LENGTH,
+  type: VRXFormValidatorTypes.MIN_LENGTH,
   validation: 8,
   message: 'Not enough characters. Needs to be at least 8',
 }

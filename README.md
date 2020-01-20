@@ -2,12 +2,12 @@
 
 ## Installation
 ```
-npm i vue-form
+npm i vrx-form
 ```
 
 ### Quick start
 
-For a Guide, including a Getting Started guide, please head over to [guides](https://chris-washington.github.io/vue-form) section of the documentation.
+For a Guide, including a Getting Started guide, please head over to [guides](https://chris-washington.github.io/vrx-form) section of the documentation.
 
 
 ### Contributing

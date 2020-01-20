@@ -1,20 +1,20 @@
 /* eslint-disable no-param-reassign */
-import VueFormDirective from "./directive/form";
-import VueFormFieldDirective from "./directive/field";
-import VueForm from "./form/form";
-import VueFormCustomValidator from "./validators/custom-validator";
-import VueFormValidatorTypes from "./validators/validator-types";
+import VRXFormDirective from "./directive/form";
+import VRXFormFieldDirective from "./directive/field";
+import VRXForm from "./form/form";
+import VRXFormCustomValidator from "./validators/custom-validator";
+import VRXFormValidatorTypes from "./validators/validator-types";
 
-const VueFormsPlugin = {};
+const VRXFormsPlugin = {};
 
-VueFormsPlugin.install = function install(Vue) {
-  Vue.directive("form", VueFormDirective);
-  Vue.directive("form-field", VueFormFieldDirective);
+VRXFormsPlugin.install = function install(Vue) {
+  Vue.directive("form", VRXFormDirective);
+  Vue.directive("form-field", VRXFormFieldDirective);
   Vue.prototype.$createForm = function createForm() {
-    return new VueForm();
+    return new VRXForm();
   };
 };
 
-export default VueFormsPlugin;
+export default VRXFormsPlugin;
 
-export { VueForm, VueFormCustomValidator, VueFormValidatorTypes };
+export { VRXForm, VRXFormCustomValidator, VRXFormValidatorTypes };

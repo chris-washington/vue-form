@@ -1,5 +1,5 @@
 import { isNil, uniqBy, get, isBoolean } from "lodash-es";
-import VueRxFormValidator from "../validators";
+import VRXFormValidator from "../validators";
 
 import getValidationErrorIfPresent from "../validators/validation-error";
 
@@ -20,7 +20,7 @@ export default class FieldValidator {
     for (let i = validators.length; i--; ) {
       const { type, message, validation, options } = uniqueValidators[i];
 
-      this.validators[i] = VueRxFormValidator.createValidator(type, message, validation, options);
+      this.validators[i] = VRXFormValidator.createValidator(type, message, validation, options);
     }
   }
 

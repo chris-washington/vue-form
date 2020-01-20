@@ -3,7 +3,7 @@ import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
 
-export default class VueRxMinLengthValidator extends BaseValidator {
+export default class VRXMinLengthValidator extends BaseValidator {
   constructor(validationValue, message) {
     super(
       validatorTypes.MIN_LENGTH,

@@ -1,4 +1,4 @@
-import VueRxMinValidator from "@/validators/min-validator";
+import VRXMinValidator from "@/validators/min-validator";
 
 describe("validators/min-validator.js", () => {
   describe("When initialized", () => {
@@ -7,7 +7,7 @@ describe("validators/min-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxMinValidator(validationValue);
+        validator = new VRXMinValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -22,7 +22,7 @@ describe("validators/min-validator.js", () => {
       const message = "my message";
 
       beforeEach(() => {
-        validator = new VueRxMinValidator(validationValue, message);
+        validator = new VRXMinValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

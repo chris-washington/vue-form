@@ -7,7 +7,7 @@
 The following are the main classes that an application will interface with.
 
 
-## VueForm
+## VRXForm
 
 ### isDirty
 
@@ -66,9 +66,9 @@ is called this can no longer be set.
 
 #### Parameters
 
--   `validators` **...VueFormDataValidator** the validators to validate each field.
+-   `validators` **...VRXFormDataValidator** the validators to validate each field.
 
-Returns **[VueForm](#vueform)** returns self for chaining.
+Returns **[VRXForm](#vrxform)** returns self for chaining.
 
 ### clearForm
 
@@ -86,7 +86,7 @@ has to be called to start the process of validation.
 
 Returns the current validator object.
 
-## VueFormCustomValidator
+## VRXFormCustomValidator
 
 **Extends BaseValidator**
 
@@ -106,7 +106,7 @@ Returns the set message on initialization
 The following are the types that are used to define aspects of the above classes.
 
 
-## VueFormValidatorType
+## VRXFormValidatorType
 
 Valid built in validations
 
@@ -121,7 +121,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 -   `MIN` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** use the `min` validator.
 -   `MAX` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** use the `max` validator.
 
-## VueFormValidator
+## VRXFormValidator
 
 Defines a validation for a field
 
@@ -129,6 +129,6 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
--   `type` **(VueFormValidatorTypes | [VueFormCustomValidator](#vueformcustomvalidator))** The type of validation to be done
+-   `type` **(VRXFormValidatorTypes | [VRXFormCustomValidator](#vrxformcustomvalidator))** The type of validation to be done
 -   `validation` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** a number or string to validate against.
 -   `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** what to include in errors if the validation fails.

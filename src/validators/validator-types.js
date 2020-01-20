@@ -1,6 +1,6 @@
 /**
  * Valid built in validations
- * @typedef {Object} VueFormValidatorType
+ * @typedef {Object} VRXFormValidatorType
  * @property {string} REQUIRED - use the `required` validator.
  * @property {string} PATTERN - use the `pattern` validator.
  * @property {string} MAX_LENGTH - use the `max length` validator.

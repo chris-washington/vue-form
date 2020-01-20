@@ -5,7 +5,7 @@ import BaseValidator from "./base-validator";
  * @classdesc Extendible class for creating custom validations
  *            that can be shared across a Vue project.
  */
-export default class VueFormCustomValidator extends BaseValidator {
+export default class VRXFormCustomValidator extends BaseValidator {
   /**
    *
    * @param {string} type - This is the unique name of the validator.

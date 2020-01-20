@@ -8,13 +8,13 @@ To `v-form` directive is the starting point of form validation. When initialized
 
 ## Initialization
 
-By adding the directive `v-form` to a `form` element and passing it a [VueForm](/api/#vueform) object, the library can initialize form validations.
+By adding the directive `v-form` to a `form` element and passing it a [VRXForm](/api/#vueform) object, the library can initialize form validations.
 
 ::: danger FATAL
 If `v-form` does not appear on a `form` element, an error will be thrown.
 :::
 
-To initialize the form pass in the [VueForm](/api/#vueform) object:
+To initialize the form pass in the [VRXForm](/api/#vueform) object:
 
 ```vue{2,15}
 <template>
@@ -27,8 +27,8 @@ To initialize the form pass in the [VueForm](/api/#vueform) object:
    name 'MyForm',
    data() {
      return {
-       // can also import VueForm from 'vue-form'...
-       // and instantiate it like so myForm: new VueForm()
+       // can also import VRXForm from 'vrx-form'...
+       // and instantiate it like so myForm: new VRXForm()
        myForm: this.$createForm()
      }
    }
@@ -63,7 +63,7 @@ If you need to override a specific field's input event you can do so as explaine
 
 ## Dirty and pristine
 
-The [VueForm](/api#vueform) object knows the state of the object, whether it is dirty or pristine.
+The [VRXForm](/api#vueform) object knows the state of the object, whether it is dirty or pristine.
 
 Pristine is when the form has never received any type of input from the user. Where as dirty is when the current form values are not equal to their original state.
 
@@ -110,7 +110,7 @@ A very important use case for `isDirty`is for edits. More often than not you wil
 
 ## Valid
 
-A [VueForm](/api#vueform) object can also know the state of the forms validity. This is controlled through the property `isValid`.
+A [VRXForm](/api#vueform) object can also know the state of the forms validity. This is controlled through the property `isValid`.
 
 Take the following example:
 

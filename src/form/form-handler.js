@@ -4,7 +4,7 @@ import { addSubscription } from "../helpers/utils/operations";
 
 import FormAttributesHandler from "./form-attributes-handler";
 
-export default class VueFormHandler {
+export default class VRXFormHandler {
   constructor(el, component, formName) {
     this.el = el;
     this.component = component;

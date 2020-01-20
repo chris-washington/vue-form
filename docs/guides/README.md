@@ -19,7 +19,7 @@ Vue Form seeks to be a simple abstraction layer for form validation and form eve
 NPM is the recommended choice for installation:
 
 ```javascript
-npm i vue-form
+npm i vrx-form
 ```
 
 ## Setup
@@ -28,14 +28,14 @@ Vue Form comes in the form of a plugin:
 
 ```js
 import Vue from 'vue';
-import VueForm from 'vue-form';
+import VRXForm from 'vrx-form';
 
-Vue.use(VueForm);
+Vue.use(VRXForm);
 ```
 
 ## Quick start
 
-Once the plugin is installed, VueForm objects can be created in a component. Below, is a step by step guide for creating a new form with Vue form validations. For the purposes of the quick start guide, it will walk through creating a message form.
+Once the plugin is installed, VRXForm objects can be created in a component. Below, is a step by step guide for creating a new form with Vue form validations. For the purposes of the quick start guide, it will walk through creating a message form.
 
 ### Form creation
 First, create the form and add the `v-form` directive:
@@ -60,9 +60,9 @@ export default {
 </script>
 ```
 
-In order to use the `v-form` directive it must be on a `form` elememnt. It must also receive a data object that is of type [VueForm](/api#vueform).
+In order to use the `v-form` directive it must be on a `form` elememnt. It must also receive a data object that is of type [VRXForm](/api#vueform).
 
-When the `VueForm` plugin is created, each component has access to a method called `$createForm` which is in the component scope. This will create the `VueForm` data object as shown above.
+When the `VRXForm` plugin is created, each component has access to a method called `$createForm` which is in the component scope. This will create the `VRXForm` data object as shown above.
 
 ### Field initialization
 
@@ -111,7 +111,7 @@ Next, when initializing, the validations must be set before Vue form will valida
 
 ```vue{30-35}
 <template>
-  <!-- pass in the VueForm object into the v-form directive -->
+  <!-- pass in the VRXForm object into the v-form directive -->
 
   <form v-form="messageForm">
     <!-- all form fields must have v-form-field and v-model to work -->
@@ -122,7 +122,7 @@ Next, when initializing, the validations must be set before Vue form will valida
 </template>
 <script>
 // provides an object with built in validators
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 export default {
   name: 'HelloForm',
   data() {
@@ -139,7 +139,7 @@ export default {
       // This is how a validator is set
       .setValidations({
         'note': [{
-          type: VueFormValidatorTypes.MIN_LENGTH,
+          type: VRXFormValidatorTypes.MIN_LENGTH,
           validation: 8,
           message: 'Not enough characters. Needs to be at least 8',
         }],
@@ -166,7 +166,7 @@ Next, although not necessary, a form can set what action should be taken when a 
 
 ```vue{11,42-46}
 <template>
-  <!-- pass in the VueForm object into the v-form directive -->
+  <!-- pass in the VRXForm object into the v-form directive -->
 
   <form v-form="messageForm">
     <!-- all form fields must have v-form-field and v-model to work -->
@@ -181,7 +181,7 @@ Next, although not necessary, a form can set what action should be taken when a 
 </template>
 <script>
 // provides an object with built in validators
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 export default {
   name: 'HelloForm',
   data() {
@@ -198,7 +198,7 @@ export default {
       // This is how a validator is set
       .setValidations({
         'note': [{
-          type: VueFormValidatorTypes.MIN_LENGTH,
+          type: VRXFormValidatorTypes.MIN_LENGTH,
           validation: 8,
           message: 'Not enough characters. Needs to be at least 8',
         }],
@@ -223,7 +223,7 @@ The last step before validations can begin is to initialize the validations. The
 
 ```vue{33}
 <template>
-  <!-- pass in the VueForm object into the v-form directive -->
+  <!-- pass in the VRXForm object into the v-form directive -->
 
   <form v-form="messageForm">
     <!-- all form fields must have v-form-field and v-model to work -->
@@ -238,7 +238,7 @@ The last step before validations can begin is to initialize the validations. The
 </template>
 <script>
 // provides an object with built in validators
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 export default {
   name: 'HelloForm',
   data() {
@@ -274,7 +274,7 @@ To view those errors create a computed method to retrieve the error and create a
 
 ```vue{10-12,52-55}
 <template>
-  <!-- pass in the VueForm object into the v-form directive -->
+  <!-- pass in the VRXForm object into the v-form directive -->
 
   <form v-form="messageForm">
     <!-- all form fields must have v-form-field and v-model to work -->
@@ -292,7 +292,7 @@ To view those errors create a computed method to retrieve the error and create a
 </template>
 <script>
 // provides an object with built in validators
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 export default {
   name: 'HelloForm',
   data() {
@@ -309,7 +309,7 @@ export default {
       // This is how a validator is set
       .setValidations({
         'note': [{
-          type: VueFormValidatorTypes.MIN_LENGTH,
+          type: VRXFormValidatorTypes.MIN_LENGTH,
           validation: 8,
           message: 'Not enough characters. Needs to be at least 8',
         }],
@@ -338,7 +338,7 @@ Notice that `priorityMessage` is used to show the error. `priorityMessage` is th
 ```js
 noteMinLengthError() {
   return this.messageForm.errors.note
-        ? this.messageForm.errors.note[VueFormValidatorTypes.MIN_LENGTH] : null;
+        ? this.messageForm.errors.note[VRXFormValidatorTypes.MIN_LENGTH] : null;
 }
 ```
 

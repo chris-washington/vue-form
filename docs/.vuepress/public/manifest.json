@@ -13,9 +13,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/chris-washington/vue-form",
+  "start_url": "/chris-washington/vrx-form",
   "background_color": "#ffffff",
   "display": "standalone",
-  "scope": "/chris-washington/vue-form",
+  "scope": "/chris-washington/vrx-form",
   "theme_color": "#3eaf7c"
 }

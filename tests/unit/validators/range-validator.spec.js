@@ -1,4 +1,4 @@
-import VueRxRangeValidator from "@/validators/range-validator";
+import VRXRangeValidator from "@/validators/range-validator";
 import { throwIfNotTrue, isValidRange } from "@/helpers/utils/operations";
 
 jest.mock("@/helpers/utils/operations");
@@ -11,7 +11,7 @@ describe("validators/range-validator.js", () => {
     describe("and default message is used", () => {
       beforeEach(() => {
         isValidRange.mockReturnValue(true);
-        validator = new VueRxRangeValidator(validationValue);
+        validator = new VRXRangeValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -31,7 +31,7 @@ describe("validators/range-validator.js", () => {
       const message = "my message";
 
       beforeEach(() => {
-        validator = new VueRxRangeValidator(validationValue, message);
+        validator = new VRXRangeValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

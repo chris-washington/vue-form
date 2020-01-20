@@ -1,6 +1,6 @@
-import { VueFormCustomValidator } from 'vue-form';
+import { VRXFormCustomValidator } from 'vrx-form';
 
-export default class UsernameExistsValidator extends VueFormCustomValidator {
+export default class UsernameExistsValidator extends VRXFormCustomValidator {
   constructor(message, options) {
     super('usernameExists', message || 'This username already exists', options);
   }

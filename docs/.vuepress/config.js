@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = (options, context) => ({
-  title: 'Vue Form',
+  title: 'VRx Form',
   description: 'Simplify form validations and handling with Vue Form',
   base: process.env.NODE_ENV === 'production'
     ? '/vue-form/'
@@ -27,7 +27,7 @@ module.exports = (options, context) => ({
     }]
   ],
   alias: {
-    'vue-form': `${process.cwd()}/dist-babel/index.js`
+    'vrx-form': `${process.cwd()}/dist-babel/index.js`
   },
   markdown: {
     lineNumbers: true

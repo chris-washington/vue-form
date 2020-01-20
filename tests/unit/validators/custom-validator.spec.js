@@ -1,4 +1,4 @@
-import VueFormCustomValidator from "@/validators/custom-validator";
+import VRXFormCustomValidator from "@/validators/custom-validator";
 
 describe("validators/custom-validator.js", () => {
   describe("When initialized", () => {
@@ -9,7 +9,7 @@ describe("validators/custom-validator.js", () => {
         option1: "anOption"
       };
 
-      const validator = new VueFormCustomValidator(type, message, options);
+      const validator = new VRXFormCustomValidator(type, message, options);
 
       expect(validator.getMessage()).toBe(message);
       expect(validator.message).toBe(message);

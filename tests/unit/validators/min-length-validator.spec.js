@@ -1,4 +1,4 @@
-import VueRxMinLengthValidator from "@/validators/min-length-validator";
+import VRXMinLengthValidator from "@/validators/min-length-validator";
 
 describe("validators/min-length-validator.js", () => {
   describe("When initialized", () => {
@@ -7,7 +7,7 @@ describe("validators/min-length-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxMinLengthValidator(validationValue);
+        validator = new VRXMinLengthValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -22,7 +22,7 @@ describe("validators/min-length-validator.js", () => {
       const message = "my message";
 
       beforeEach(() => {
-        validator = new VueRxMinLengthValidator(validationValue, message);
+        validator = new VRXMinLengthValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

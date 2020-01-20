@@ -1,4 +1,4 @@
-import VueRxPatternValidator from "@/validators/pattern-validator";
+import VRXPatternValidator from "@/validators/pattern-validator";
 
 describe("validators/pattern-validator.js", () => {
   describe("When initialized", () => {
@@ -10,7 +10,7 @@ describe("validators/pattern-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxPatternValidator(validationValue);
+        validator = new VRXPatternValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -20,7 +20,7 @@ describe("validators/pattern-validator.js", () => {
     describe("when string is used", () => {
       beforeEach(() => {
         validationValue = "^(new|New)";
-        validator = new VueRxPatternValidator(validationValue, message);
+        validator = new VRXPatternValidator(validationValue, message);
       });
       it("then it validates correctly", () => {
         expect(validator.type).toBe(type);
@@ -40,7 +40,7 @@ describe("validators/pattern-validator.js", () => {
     describe("and custom message is used", () => {
       beforeEach(() => {
         validationValue = /^(new|New)/;
-        validator = new VueRxPatternValidator(validationValue, message);
+        validator = new VRXPatternValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

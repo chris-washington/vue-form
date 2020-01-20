@@ -2,7 +2,7 @@ import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
 
-export default class VueRxPatternValidator extends BaseValidator {
+export default class VRXPatternValidator extends BaseValidator {
   constructor(validationValue, message) {
     super(validatorTypes.PATTERN, validationValue, message || defaultErrorMessages.pattern);
   }

@@ -17,9 +17,9 @@
 <script>
 import Vue from 'vue';
 
-import { VueFormValidatorTypes, VueFormCustomValidator } from 'vue-form';
+import { VRXFormValidatorTypes, VRXFormCustomValidator } from 'vrx-form';
 
-class GoofyValidator extends VueFormCustomValidator {
+class GoofyValidator extends VRXFormCustomValidator {
   constructor(message, options) {
     // must make super call. Options are optional
     super('goofy', message || 'Should start with GOOFY', options);

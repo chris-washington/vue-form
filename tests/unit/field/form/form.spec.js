@@ -1,6 +1,6 @@
 import { has } from "lodash-es";
 import { BehaviorSubject, Observable } from "rxjs";
-import VueForm from "@/form/form";
+import VRXForm from "@/form/form";
 
 jest.mock("lodash-es");
 
@@ -9,7 +9,7 @@ describe("form/form.js", () => {
     let vueForm;
 
     beforeEach(() => {
-      vueForm = new VueForm();
+      vueForm = new VRXForm();
     });
 
     it("then initializations have happened", () => {

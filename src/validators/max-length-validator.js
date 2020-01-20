@@ -3,7 +3,7 @@ import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
 
-export default class VueRxMaxLengthValidator extends BaseValidator {
+export default class VRXMaxLengthValidator extends BaseValidator {
   constructor(validationValue, message) {
     super(
       validatorTypes.MAX_LENGTH,

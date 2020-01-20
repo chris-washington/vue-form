@@ -1,4 +1,4 @@
-import VueFormHandler from "../form/form-handler";
+import VRXFormHandler from "../form/form-handler";
 import registerGlobal from "../helpers/properties/register-global";
 import registerFields from "../helpers/properties/register-fields";
 import registerForm from "../helpers/properties/register-form";
@@ -15,9 +15,9 @@ export default {
       registerFields(el);
 
       if (vnode.tag === "form") {
-        new VueFormHandler(el, vnode.context, expression).init();
+        new VRXFormHandler(el, vnode.context, expression).init();
       } else {
-        throw new Error("vue-form can only be used on a form-tag");
+        throw new Error("vrx-form can only be used on a form-tag");
       }
     }
   },

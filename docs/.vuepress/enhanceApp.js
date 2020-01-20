@@ -1,5 +1,5 @@
 
-import VueFormPlugin from '../../dist-babel';
+import VRXFormPlugin from '../../dist-babel';
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -7,5 +7,5 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  Vue.use(VueFormPlugin);
+  Vue.use(VRXFormPlugin);
 }

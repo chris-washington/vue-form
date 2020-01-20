@@ -1,4 +1,4 @@
-import VueRxMaxLengthValidator from "@/validators/max-length-validator";
+import VRXMaxLengthValidator from "@/validators/max-length-validator";
 
 describe("validators/max-length-validator.js", () => {
   describe("When initialized", () => {
@@ -7,7 +7,7 @@ describe("validators/max-length-validator.js", () => {
 
     describe("and default message is used", () => {
       beforeEach(() => {
-        validator = new VueRxMaxLengthValidator(validationValue);
+        validator = new VRXMaxLengthValidator(validationValue);
       });
 
       it("then the error message is default", () => {
@@ -22,7 +22,7 @@ describe("validators/max-length-validator.js", () => {
       const message = "my message";
 
       beforeEach(() => {
-        validator = new VueRxMaxLengthValidator(validationValue, message);
+        validator = new VRXMaxLengthValidator(validationValue, message);
       });
 
       it("then it validates correctly", () => {

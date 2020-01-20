@@ -18,14 +18,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.REQUIRED,
+      type: VRXFormValidatorTypes.REQUIRED,
       validation: true,
       message: 'This field is required.'
     }]
@@ -37,7 +37,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.REQUIRED` | Creates a Required validator |
+| type  | `VRXFormValidatorTypes.REQUIRED` | Creates a Required validator |
 | validation | `Boolean` | Make the field required (true) or not (false) |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -53,14 +53,14 @@ The range length validator ensures that a strings length is between a minimum ch
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.RANGE_LENGTH,
+      type: VRXFormValidatorTypes.RANGE_LENGTH,
       validation: [3, 16],
       message: 'Text length should be between 3 and 16 characters long'
     }]
@@ -72,7 +72,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.RANGE_LENGTH` | Creates a Range Length validator |
+| type  | `VRXFormValidatorTypes.RANGE_LENGTH` | Creates a Range Length validator |
 | validation | `Array(Number)` | An array of length 2. 0 index is the `min` and the 1 index is the `max` |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -90,14 +90,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.REQUIRED,
+      type: VRXFormValidatorTypes.REQUIRED,
       validation: /^(new|New)/,
       message: 'This field must begin with new or New'
     }]
@@ -109,7 +109,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.PATTERN` | Creates a Pattern validator |
+| type  | `VRXFormValidatorTypes.PATTERN` | Creates a Pattern validator |
 | validation | `RegEx` | Sets an expected pattern for the field |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -128,14 +128,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.MIN_LENGTH,
+      type: VRXFormValidatorTypes.MIN_LENGTH,
       validation: 5,
       message: 'This field must be at least 5 characters long.'
     }]
@@ -147,7 +147,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.MIN_LENGTH` | Creates a Min Length validator |
+| type  | `VRXFormValidatorTypes.MIN_LENGTH` | Creates a Min Length validator |
 | validation | `Number` | Sets the least amount of characters the field can have |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -170,14 +170,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.MIN_LENGTH,
+      type: VRXFormValidatorTypes.MIN_LENGTH,
       validation: 8,
       message: 'This field must be no more than 8 characters long.'
     }]
@@ -189,7 +189,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.MAX_LENGTH` | Creates a Max Length validator |
+| type  | `VRXFormValidatorTypes.MAX_LENGTH` | Creates a Max Length validator |
 | validation | `Number` | Sets the max amount of characters the field can have |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -208,14 +208,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.MIN,
+      type: VRXFormValidatorTypes.MIN,
       validation: 10,
       message: 'Must be a number and the minimum number allowed is 10.'
     }]
@@ -227,7 +227,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.MIN` | Creates a Min  validator |
+| type  | `VRXFormValidatorTypes.MIN` | Creates a Min  validator |
 | validation | `Number` | Sets the lowest number allowed |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -250,14 +250,14 @@ It can be added to a field validator in the following way:
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 
 // name of the form object here is dataForm
 
 this.dataForm
   .setValidations({
     message: [{
-      type: VueFormValidatorTypes.MAX,
+      type: VRXFormValidatorTypes.MAX,
       validation: 10,
       message: 'Must be a number and the max number allowed is 10.'
     }]
@@ -269,7 +269,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormValidatorTypes.MAX` | Creates a Max  validator |
+| type  | `VRXFormValidatorTypes.MAX` | Creates a Max  validator |
 | validation | `Number` | Sets the largest number allowed |
 | message | `String` | The message of the error when a field is not valid |
 
@@ -288,9 +288,9 @@ It can be added to a field validator in the following way:
 
 ```js
 // a custom validator in custom-validator.js
-import { VueFormCustomValidator } from 'vue-form';
+import { VRXFormCustomValidator } from 'vrx-form';
 
-class GoofyValidator extends VueFormCustomValidator {
+class GoofyValidator extends VRXFormCustomValidator {
   constructor(message, options) {
     // must make super call. Options are optional
     super('goofy', message || 'Should start with GOOFY', options);
@@ -336,7 +336,7 @@ class GoofyValidator extends VueFormCustomValidator {
 
 ```js
 // in the imports section
-import { VueFormValidatorTypes } from 'vue-form';
+import { VRXFormValidatorTypes } from 'vrx-form';
 import GoofyValidator from './custom-validaor';
 
 // name of the form object here is dataForm
@@ -358,7 +358,7 @@ this.dataForm
 ### Inputs
 | Input | Type | Description |
 |-------|------|-------------|
-| type  | `VueFormCustomValidator` | Creates a custom validator |
+| type  | `VRXFormCustomValidator` | Creates a custom validator |
 | validation | `null` | Validation is built into validator |
 | options | `any` | Allows for custom validators to be configurable |
 | message | `String` | The message of the error when a field is not valid |
@@ -377,7 +377,7 @@ The validate method can also be asynchronous. If you need to make a call to a se
 ```js
 import axios from 'Axios';
 
-class TeamExistsValidator extends VueFormCustomValidator {
+class TeamExistsValidator extends VRXFormCustomValidator {
   constructor(message, options) {
     // must make super call. Options are optional
     super('teamExists', message || 'This team already exists, please choose another one.', options);

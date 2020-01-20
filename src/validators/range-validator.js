@@ -4,7 +4,7 @@ import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
 
-export default class VueRxRangeValidator extends BaseValidator {
+export default class VRXRangeValidator extends BaseValidator {
   constructor(validationValue, message) {
     throwIfNotTrue(
       isValidRange(validationValue),

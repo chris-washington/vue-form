@@ -3,7 +3,7 @@ import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
 import { isInclusiveEmpty } from "../helpers/utils/operations";
 
-export default class VueRxRequiredValidator extends BaseValidator {
+export default class VRXRequiredValidator extends BaseValidator {
   constructor(validationValue, message) {
     super(validatorTypes.REQUIRED, validationValue, message || defaultErrorMessages.required);
   }
