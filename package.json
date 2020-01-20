@@ -1,5 +1,5 @@
 {
-  "name": "vue-rx-form",
+  "name": "vrx-form",
   "version": "1.0.0-beta.1",
   "scripts": {
     "serve": "npm run build:babel:docs && npm run api:build && vuepress dev docs",
