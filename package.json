@@ -1,7 +1,6 @@
 {
   "name": "vue-form",
   "version": "1.0.0-beta.1",
-  "private": true,
   "scripts": {
     "serve": "npm run build:babel:docs && npm run api:build && vuepress dev docs",
     "build": "vue-cli-service build --target lib --name vueForm src/index.js",
