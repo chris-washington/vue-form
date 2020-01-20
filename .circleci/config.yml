@@ -37,6 +37,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Build app
+          command: npm run build
+      - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
@@ -63,7 +66,7 @@ jobs:
           command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs
 workflows:
   version: 2
-  test-deploy:
+  test_deploy_docs:
     jobs:
       - test:
           filters:
