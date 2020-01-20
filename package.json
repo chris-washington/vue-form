@@ -1,6 +1,10 @@
 {
   "name": "vrx-form",
   "version": "1.0.0-beta.1",
+  "description": "Provides directives to help facilitate form validations reactively in Vue applications.",
+  "keywords": [
+    "Vue", "form", "reactive", "vue form", "vue reactive form", "validation", "vue form validation",
+  ],
   "scripts": {
     "serve": "npm run build:babel:docs && npm run api:build && vuepress dev docs",
     "build": "vue-cli-service build --target lib --name vueForm src/index.js",
@@ -15,11 +19,18 @@
   "main": "dist/index.js",
   "browser": "dist/vueForm.umd.js",
   "files": [
-    "./dist/vueForm.common.js",
-    "./dist/vueForm.umd.js",
-    "./dist/vueForm.umd.js.map",
-    "./dist/vueForm.common.js.map"
+    "dist/**/*.js",
+    "dist/**/*.map"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chris-washington/vue-form"
+  },
+  "author": "Chris Washington <c.arnez.washington@gmail.com> (https://www.linkedin.com/in/professionaldeveloper/)",
+  "license": { "license" : "MIT" },
+  "bugs": {
+    "url": "https://github.com/chris-washington/vue-form/issues"
+  },
   "dependencies": {
     "core-js": "^3.4.3",
     "lodash-es": "^4.17.15",
