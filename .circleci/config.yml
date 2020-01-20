@@ -20,6 +20,9 @@ jobs:
             - v1-dependencies-
       - run: npm install
       - run:
+          name: Lint files
+          command: npm run lint
+      - run:
           name: Run tests
           command: npm run test:unit
       - save_cache:
