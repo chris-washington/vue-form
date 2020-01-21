@@ -58,7 +58,7 @@ jobs:
           command: npm run docs:build
       - add_ssh_keys:
           fingerprints:
-            - "70:9c:8c:ed:0c:d4:b7:3d:e6:eb:37:c6:05:7e:f2:fd"
+            - "67:3e:06:8c:97:26:3d:af:cb:1d:d7:97:b6:cb:96:12"
       - run:
           name: Config ssh
           command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
