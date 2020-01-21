@@ -49,7 +49,6 @@ export default class FormEventHandler {
   }
 
   handleFieldBlur({ name, state }) {
-    console.log(this.form.state, state);
     set(this.form.state, name, state);
     this.setFormAttributes(this.form.state);
     this.updateState();

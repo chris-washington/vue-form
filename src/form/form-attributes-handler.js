@@ -18,7 +18,6 @@ export default class FormAttributesHandler {
 
   setFormAttributes(state) {
     this.formState = { ...this.formState, ...state };
-    console.log(state);
     this.form.pristine = false;
     this.el.isPristine = false;
     this.form.dirty = this.getFormDirtiness();
