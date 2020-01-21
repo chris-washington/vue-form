@@ -60,6 +60,9 @@ jobs:
           fingerprints:
             - "70:9c:8c:ed:0c:d4:b7:3d:e6:eb:37:c6:05:7e:f2:fd"
       - run:
+          name: Config ssh
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
           name: Deploy docs to gh-pages branch
           command: |
             git config --global user.email "chriswashington@remnantrva.com"
