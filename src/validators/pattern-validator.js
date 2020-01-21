@@ -5,10 +5,11 @@ import validatorTypes from "./validator-types";
 export default class VRXPatternValidator extends BaseValidator {
   constructor(validationValue, message) {
     super(validatorTypes.PATTERN, validationValue, message || defaultErrorMessages.pattern);
+    this.validatorRegex = new RegExp(this.validationValue);
   }
 
   validate(value) {
-    return String(value).match(this.validationValue);
+    return this.validatorRegex.test(value);
   }
 
   getMessage() {

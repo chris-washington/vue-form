@@ -268,7 +268,7 @@ At this point validation can happen on a given form. But this isn't very useful 
 
 ### Show errors
 
-As validation happens, VRx Form is continually checking to see if the fields in the form are valid. As it does this, it is compiling errors in the `errors` object on every VRx Form object. In the case of this walk through `this.messageForm.errors`.
+As validation happens, VRx Form is continually checking to see if the fields in the form are valid. As it does this, it is compiling errors in the `errors` object on every VRx Form object. In the case of this walk through `this.messageForm.getError("<field_name>")`.
 
 To view those errors create a computed method to retrieve the error and create a div to show the error when present:
 
@@ -325,20 +325,19 @@ export default {
   },
   computed: {
     noteError() {
-      return this.messageForm.errors.note
-        ? this.messageForm.errors.note.priorityMessage : null;
+      return this.messageForm.getError("note");
     }
   }
 };
 </script>
 ```
 
-Notice that `priorityMessage` is used to show the error. `priorityMessage` is the first ordered validator for a field. So if there are 3 validators for a field, the first one at position `[0]` will be the `priorityMessage`. You can also retrieve specific error messages by doing something like the following:
+By default the `priorityMessage` is returned to show the error. `priorityMessage` is the first ordered validator for a field. So if there are 3 validators for a field, the first one at position `[0]` will be the `priorityMessage`. You can also retrieve specific error messages by doing something like the following:
 
 ```js
 noteMinLengthError() {
-  return this.messageForm.errors.note
-        ? this.messageForm.errors.note[VRXFormValidatorTypes.MIN_LENGTH] : null;
+  return this.messageForm.getError(
+    "note", VRXFormValidatorTypes.MIN_LENGTH);
 }
 ```
 

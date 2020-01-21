@@ -1,4 +1,4 @@
-import { get, isNil } from "lodash-es";
+import { get, isNil, set } from "lodash-es";
 
 import FieldHandler from "../field/field-handler";
 
@@ -16,6 +16,7 @@ export default class FormFieldHandler {
     const inputEvent = this.el.dataset.inputEvent || "input";
     const { component } = this;
     const originalValue = get(this.component, dataName);
+
     return {
       validators,
       name,
@@ -34,7 +35,8 @@ export default class FormFieldHandler {
   async init() {
     const validatorObject = this.form.getValidators();
     const validatorKeys = Object.keys(validatorObject);
-    let errors = {};
+
+    let state = {};
 
     for (let i = validatorKeys.length; i--; ) {
       const name = validatorKeys[i];
@@ -52,11 +54,15 @@ export default class FormFieldHandler {
           );
 
           field.fieldHandler = new FieldHandler(field, validatorInfo).init();
-          // eslint-disable-next-line no-await-in-loop
-          errors = { ...errors, ...(await field.fieldHandler.revalidate()) };
+
+          set(state, name, {
+            errors: await field.fieldHandler.revalidate(),
+            pristine: true,
+            dirty: false
+          });
         }
       }
     }
-    this.formEventHandler.setFormAttributes(errors);
+    this.formEventHandler.setFormAttributes(state);
   }
 }

@@ -10,15 +10,15 @@ export default class FormAttributesHandler {
     this.formEventHandler = new FormEventHandler(this.el, this.form, this);
   }
 
-  init() {
-    this.setFormAttributes();
-    this.formEventHandler.init();
-    this.formErrors = {};
+  async init() {
+    this.setFormAttributes(this.form.state);
+    await this.formEventHandler.init();
     return this;
   }
 
-  setFormAttributes(errors) {
-    this.formErrors = { ...this.formErrors, ...errors };
+  setFormAttributes(state) {
+    this.formState = { ...this.formState, ...state };
+    console.log(state);
     this.form.pristine = false;
     this.el.isPristine = false;
     this.form.dirty = this.getFormDirtiness();
@@ -35,16 +35,14 @@ export default class FormAttributesHandler {
 
   setFormValidity() {
     let isValid = true;
-    const errorKeys = Object.keys(this.formErrors);
+    const errorKeys = Object.keys(this.formState);
     for (let i = errorKeys.length; i--; ) {
-      const error = this.formErrors[errorKeys[i]];
-
+      const error = this.formState[errorKeys[i]].errors;
       if (!isNil(error)) {
         isValid = false;
         break;
       }
     }
-
     this.form.isValid = isValid;
 
     this.component.$forceUpdate();

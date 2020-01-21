@@ -103,8 +103,7 @@ export default {
   },
   computed: {
     messageError() {
-      return this.commentForm.errors.message
-        ? this.commentForm.errors.message.priorityMessage : null;
+      return this.commentForm.getError("message");
     },
   },
   data() {

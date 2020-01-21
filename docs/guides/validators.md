@@ -277,7 +277,7 @@ this.dataForm
 <br>
 
 <ClientOnly>
-  <ValidatorExample :validation="10" :validator="'max'" :msg="'Must be a number and the minimum number allowed is 10.'" />
+  <ValidatorExample :validation="10" :validator="'max'" :msg="'Must be a number and the max number allowed is 10.'" />
 </ClientOnly>
 
 ## Custom validator

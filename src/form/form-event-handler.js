@@ -1,5 +1,5 @@
 import { fromEvent } from "rxjs";
-import { cloneDeep, set, unset } from "lodash-es";
+import { cloneDeep, set, get } from "lodash-es";
 import { addSubscription } from "../helpers/utils/operations";
 
 import FormFieldHandler from "./form-field-handler";
@@ -17,8 +17,8 @@ export default class FormEventHandler {
     );
   }
 
-  init() {
-    this.formFieldHandler.init();
+  async init() {
+    await this.formFieldHandler.init();
     addSubscription(
       this.el,
       fromEvent(this.el, "submit").subscribe(event => event.preventDefault())
@@ -33,23 +33,25 @@ export default class FormEventHandler {
     return this.handleFieldBlur.bind(this);
   }
 
-  updateErrors() {
-    this.form.errors = cloneDeep(this.form.errors);
+  updateState() {
+    this.form.state = cloneDeep(this.form.state);
   }
 
-  setFormAttributes(errors) {
-    this.formAttributeHandler.setFormAttributes(errors);
+  setFormAttributes(state) {
+    this.formAttributeHandler.setFormAttributes(state);
   }
 
-  handleFieldInput({ name, errors }) {
-    this.setFormAttributes(errors);
-    unset(this.form.errors, name);
-    this.updateErrors(errors);
+  handleFieldInput({ name, state }) {
+    set(this.form.state, name, state);
+    this.setFormAttributes(this.form.state);
+    get(this.form.state, name).errors = undefined;
+    this.updateState();
   }
 
-  handleFieldBlur({ errors, name }) {
-    this.setFormAttributes(errors);
-    set(this.form.errors, name, errors[name]);
-    this.updateErrors(errors);
+  handleFieldBlur({ name, state }) {
+    console.log(this.form.state, state);
+    set(this.form.state, name, state);
+    this.setFormAttributes(this.form.state);
+    this.updateState();
   }
 }

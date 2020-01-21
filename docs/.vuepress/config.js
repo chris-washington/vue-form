@@ -49,7 +49,7 @@ module.exports = (options, context) => ({
         '/guides/fields',
         '/guides/validators',
         '/guides/submit',
-        '/guides/errors',
+        '/guides/state',
         '/guides/examples'
       ],
       '/api/': [''

@@ -149,39 +149,25 @@ export default {
   },
   computed: {
     usernameError() {
-      return this.profileForm.errors.username
-        ? this.profileForm.errors.username.priorityMessage
-        : null;
+      return this.profileForm.getError("username");
     },
     passwordError() {
-      return this.profileForm.errors.password
-        ? this.profileForm.errors.password.priorityMessage
-        : null;
+      return this.profileForm.getError("password");
     },
     bioError() {
-      return this.profileForm.errors.bio
-        ? this.profileForm.errors.bio.priorityMessage
-        : null;
+      return this.profileForm.getError("bio");
     },
     fullNameError() {
-      return this.profileForm.errors.fullName
-        ? this.profileForm.errors.fullName.priorityMessage
-        : null;
+      return this.profileForm.getError("fullName");
     },
     agreeError() {
-      return this.profileForm.errors.agree
-        ? this.profileForm.errors.agree.priorityMessage
-        : null;
+      return this.profileForm.getError("agree");
     },
     hearError() {
-      return this.profileForm.errors.hear
-        ? this.profileForm.errors.hear.priorityMessage
-        : null;
+      return this.profileForm.getError("hear");
     },
     receiveEmailError() {
-      return this.profileForm.errors.receiveEmail
-        ? this.profileForm.errors.receiveEmail.priorityMessage
-        : null;
+      return this.profileForm.getError("receiveEmail");
     }
   },
   filters: {

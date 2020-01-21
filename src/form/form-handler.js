@@ -1,4 +1,4 @@
-import { unset } from "lodash-es";
+import { unset, set } from "lodash-es";
 
 import { addSubscription } from "../helpers/utils/operations";
 
@@ -14,14 +14,18 @@ export default class VRXFormHandler {
 
   async handleClearForm(doClearForm) {
     if (doClearForm) {
-      let errors = {};
+      let state = {};
       for (let i = this.el.fields.length; i--; ) {
         const field = this.el.fields[i];
         unset(this.component, field.dataset.dataName);
         // eslint-disable-next-line no-await-in-loop
-        errors = { ...errors, ...(await field.fieldHandler.revalidate()) };
+        set(state, field.dataset.formField, {
+          errors: await field.fieldHandler.revalidate(),
+          pristine: true,
+          dirty: false
+        });
       }
-      this.formAttributeHandler.setFormAttributes(errors);
+      this.formAttributeHandler.setFormAttributes(state);
       await this.component.$nextTick();
       this.component.$forceUpdate();
     }

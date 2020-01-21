@@ -59,12 +59,6 @@ export default class FieldValidator {
     return this.el.type === "checkbox" || this.el.type === "radio";
   }
 
-  getResult(name, errors) {
-    const result = {};
-    result[name] = errors;
-    return result;
-  }
-
   getTrimmedValue(value) {
     let trimmedValue;
 
@@ -83,14 +77,11 @@ export default class FieldValidator {
       get(this.validatorInfo.component, this.el.dataset.dataName) || ""
     );
 
-    const { name } = this;
-
     const { validators } = this;
 
     if (!this.shouldValidate(value)) {
-      const result = this.getResult(name, errors);
-      this.el.errors = result;
-      return result;
+      this.el.errors = errors;
+      return errors;
     }
 
     for (let i = validators.length; i--; ) {
@@ -108,8 +99,7 @@ export default class FieldValidator {
       errors.priorityMessage = this.getPriorityErrorMessage(priorityIndex, errors);
     }
 
-    const result = this.getResult(name, errors);
-    this.el.errors = result;
-    return result;
+    this.el.errors = errors;
+    return errors;
   }
 }

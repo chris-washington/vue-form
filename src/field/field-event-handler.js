@@ -39,8 +39,14 @@ export default class FieldEventHandler {
         this.fieldAttributeHandler.setInputDirty();
         this.fieldAttributeHandler.setInputNotPristine();
 
-        resolve({
+        const state = {
           errors,
+          pristine: this.el.isPristine,
+          dirty: this.el.isDirty
+        };
+
+        resolve({
+          state,
           name,
           value
         });

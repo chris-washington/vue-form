@@ -1,4 +1,4 @@
-import { inRange } from "lodash-es";
+import { isNil } from "lodash-es";
 import BaseValidator from "./base-validator";
 import defaultErrorMessages from "./default-messages";
 import validatorTypes from "./validator-types";
@@ -13,7 +13,7 @@ export default class VRXMinLengthValidator extends BaseValidator {
   }
 
   validate(value) {
-    return value && inRange(value.length, this.validationValue, Infinity);
+    return !isNil(value) && value.length >= this.validationValue;
   }
 
   getMessage() {

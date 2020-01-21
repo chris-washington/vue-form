@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs";
-import { has } from "lodash-es";
+import { isNil, get } from "lodash-es";
 
 /**
  * @module VRXForm
@@ -35,7 +35,9 @@ export default class VRXForm {
   constructor() {
     this.initSubject = new BehaviorSubject();
     this.validators = {};
-    this.errors = {};
+    this.state = {};
+    this.pristine = true;
+    this.dirty = false;
     this.clearFormSubject = new BehaviorSubject();
   }
 
@@ -98,9 +100,23 @@ export default class VRXForm {
    * myForm.hasError('someEntity.myInput');
    */
   hasError(name) {
-    return has(this.errors, name);
+    const state = get(this.state, name);
+    return isNil(state) ? false : !isNil(state.errors);
   }
 
+  /**
+   *
+   * @param { String } name
+   * @param { VRXFormValidatorType } validation
+   */
+  getError(name, validation = "priorityMessage") {
+    const state = get(this.state, name);
+    if (isNil(state) || isNil(state.errors)) return undefined;
+
+    if (!isNil(state.errors)) {
+      return state.errors[validation];
+    }
+  }
   /**
    * Sets the validators that will validate the fields. Once {@link init}
    * is called this can no longer be set.
