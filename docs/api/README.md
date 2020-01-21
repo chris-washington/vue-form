@@ -59,6 +59,13 @@ myData: {
 myForm.hasError('someEntity.myInput');
 ```
 
+### getError
+
+#### Parameters
+
+-   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `validation` **[VRXFormValidatorType](#vrxformvalidatortype)**  (optional, default `"priorityMessage"`)
+
 ### setValidations
 
 Sets the validators that will validate the fields. Once [init](init)
