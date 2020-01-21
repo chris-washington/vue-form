@@ -1,6 +1,6 @@
 {
   "name": "vrx-form",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Provides directives to help facilitate form validations reactively in Vue applications.",
   "keywords": [
     "Vue", "form", "reactive", "vue form", "vue reactive form", "validation", "vue form validation"
