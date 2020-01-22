@@ -13,6 +13,9 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:3c:1f:aa:07:ed:65:0f:8f:8a:8b:be:0e:13:50:7a"
       - checkout
       - restore_cache:
           keys:
