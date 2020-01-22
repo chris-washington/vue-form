@@ -85,22 +85,16 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-            tags:
-              only: /^v.*/
       - deploy:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
             branches:
               only: master
       - docs:
           requires:
             - deploy
           filters:
-            tags:
-              only: /^v.*/
             branches:
               only: master
 
