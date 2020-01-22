@@ -1,6 +1,6 @@
 {
   "name": "vrx-form",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.5",
   "description": "Provides directives to help facilitate form validations reactively in Vue applications.",
   "keywords": [
     "Vue", "form", "reactive", "vue form", "vue reactive form", "validation", "vue form validation"
@@ -16,6 +16,7 @@
     "stryker": "cross-env VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run",
     "test": "npm run test:unit && npm run stryker"
   },
+  "homepage": "https://chris-washington.github.io/vue-form",
   "main": "dist/index.js",
   "browser": "dist/vueForm.umd.js",
   "files": [

@@ -13,6 +13,9 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:3c:1f:aa:07:ed:65:0f:8f:8a:8b:be:0e:13:50:7a"
       - checkout
       - restore_cache:
           keys:
@@ -34,6 +37,8 @@ jobs:
           paths: .
       - store_artifacts:
           path: coverage
+      - store_test_results:
+          path: results
   deploy:
     <<: *defaults
     steps:
@@ -59,6 +64,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "f3:3c:1f:aa:07:ed:65:0f:8f:8a:8b:be:0e:13:50:7a"
+      - run: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: Deploy docs to gh-pages branch
           command: |
@@ -76,22 +82,19 @@ workflows:
     jobs:
       - test:
           filters:
-            tags:
-              only: /^v.*/
+            branches:
+              ignore:
+                - gh-pages
       - deploy:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
             branches:
               only: master
       - docs:
           requires:
-            - test
+            - deploy
           filters:
-            tags:
-              only: /^v.*/
             branches:
               only: master
 
