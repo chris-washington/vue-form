@@ -3,9 +3,7 @@ const path = require("path");
 module.exports = (options, context) => ({
   title: 'VRx Form',
   description: 'Simplify form validations and handling with VRx Form',
-  base: process.env.NODE_ENV === 'production'
-    ? '/vue-form/'
-    : '/',
+  base: '/vue-form/',
   isPlayAllHeaders: true,
   activeHeaderLinks: true,
   evergreen: true,
