@@ -80,6 +80,9 @@ workflows:
     jobs:
       - test:
           filters:
+            branches:
+              ignore:
+                - gh-pages
             tags:
               only: /^v.*/
       - deploy:
