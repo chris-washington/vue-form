@@ -37,6 +37,8 @@ jobs:
           paths: .
       - store_artifacts:
           path: coverage
+      - store_test_results:
+          path: results
   deploy:
     <<: *defaults
     steps:
@@ -95,7 +97,7 @@ workflows:
               only: master
       - docs:
           requires:
-            - test
+            - deploy
           filters:
             tags:
               only: /^v.*/
