@@ -27,7 +27,7 @@
     "url": "https://github.com/chris-washington/vue-form"
   },
   "author": "Chris Washington <c.arnez.washington@gmail.com> (https://www.linkedin.com/in/professionaldeveloper/)",
-  "license": { "license" : "MIT" },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chris-washington/vue-form/issues"
   },
