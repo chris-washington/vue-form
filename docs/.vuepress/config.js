@@ -22,7 +22,13 @@ module.exports = (options, context) => ({
   plugins: [
     ['@vuepress/search', {
       searchMaxSuggestions: 10
-    }]
+    }],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-74298839-2' 
+      }
+    ]
   ],
   alias: {
     'vrx-form': `${process.cwd()}/dist-babel/index.js`
