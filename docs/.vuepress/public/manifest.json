@@ -3,19 +3,19 @@
   "name": "VRx Form",
   "icons": [
     {
-      "src": "/images/android-chrome-192x192.png",
+      "src": "/vue-form/images/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/android-chrome-512x512.png",
+      "src": "/vue-form/images/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/vrx-form",
+  "start_url": "/vue-form",
   "background_color": "#ffffff",
   "display": "standalone",
-  "scope": "/vrx-form",
+  "scope": "/vue-form",
   "theme_color": "#3eaf7c"
 }
