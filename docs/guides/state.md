@@ -7,7 +7,11 @@ lang: en-US
 
 One of the more powerful features of VRx Form is automatic error population. As a field that has the v-form-field is interacted with, if erroneous error messages will begin to populate when the field is blurred (clicked away from) unless the field has the attribute [active-error](fields.html#active-error)).
 
-As errors populate, they will be placed under the [VRXForm](/api/#vueform) objects: `<VRXForm>.state[<name-of-field>].errors.<error-name>`.
+As errors populate, they will be placed under the [VRXForm](/api/#vueform) objects: `<VRXForm>.state[<name-of-field>].errors.<error-name>`. They can also be accessed through the convenient VRXForm object method `getError`:
+
+``` js
+<VRXFORM>.getError('<field_name>', '<error_name>');
+```
 
 For instance, if a VRx Form is created on the data variable `myForm` and it has a field named `myInput` and that has 2 validators `PATTERN` and `MIN_LENGTH`, they can be accessed in the following ways:
 
@@ -15,20 +19,27 @@ For instance, if a VRx Form is created on the data variable `myForm` and it has 
 // gets pattern error
 this.myForm.state.myInput.errors[VRXFormValidatorTypes.PATTERN];
 
+// or also gets pattern error
+this.myForm.getError('myInput', VRXFormValidatorTypes.PATTERN);
+
 // gets minLength error
 this.myForm.state.myInput.errors[VRXFormValidatorTypes.MIN_LENGTH];
+
+// or also gets minLength
+this.myForm.getError('myInput', VRXFormValidatorTypes.MIN_LENGTH);
 ```
 
 ::: danger FATAL
-Accessing the errors could cause an `Null or Undefined Has No Properties` error.
+Accessing the errors could cause an `Null or Undefined Has No Properties` error. As a result you should default to using the `getError` method.
 :::
 
-You should always check for the errors existence before accessing it:
+If you must use the state variable to access the errors, you should always check for the errors existence before accessing it:
 
 ```js
 const patternError = this.myForm.errors.myInput 
               ? this.myForm.errors.myInput[VRXFormValidatorTypes.PATTERN] : null;
 ```
+
 
 
 ### Accessing custom validator errors
@@ -54,14 +65,17 @@ class TeamExistsValidator extends VRXFormCustomValidator {
 }
 ```
 
-Would be accessed like this: `<VRXForm>.state.<fieldName>.errors.teamExists`.
+Would be accessed like this: `<VRXForm>.state.<fieldName>.errors.teamExists` or better `<VRXForm>.getError('fieldName', 'teamExists');
 
 ## Priority message
 
 There are two ways to access errors. Either on a fields specific error type as shown above or by using the fields `priorityMessage`:
 
 ```js
-this.myForm.errors.myInput.priorityMessage;
+this.myForm.state.myInput.errors.priorityMessage;
+
+// or better
+this.myForm.getError("myInput"); // defaults to priorityMessage if no name is passed.
 ```
 
 The `priorityMessage` property is based on the order of validations. If using the `priorityMessage` field to show errors you should always order the errors in the order you would like to show them (what takes priority over other validations).
@@ -103,3 +117,4 @@ textarea[invalid] {
 ```
 
 > You may need the `!important` key to override other previous styles.
+

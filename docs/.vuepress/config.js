@@ -16,13 +16,18 @@ module.exports = (options, context) => ({
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'white' }],
-    ['link', { rel: 'apple-touch-icon', href: '/images/apple-touch-icon.png' }],
-    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    ['link', { rel: 'apple-touch-icon', href: '/images/apple-touch-icon.png' }]
   ],
   plugins: [
     ['@vuepress/search', {
       searchMaxSuggestions: 10
-    }]
+    }],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-74298839-2' 
+      }
+    ]
   ],
   alias: {
     'vrx-form': `${process.cwd()}/dist-babel/index.js`
