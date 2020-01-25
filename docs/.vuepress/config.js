@@ -8,6 +8,7 @@ module.exports = (options, context) => ({
   activeHeaderLinks: true,
   evergreen: true,
   head: [
+    ['meta', { name: 'google-site-verification', content: 'qbfarOJEM-pQ71lpqfc1zqyMXR2-hjW7ehGjF1s9wbU'}],
     ['link', { rel: 'icon', href: '/images/favicon.ico' }],
     ['link', { rel: 'icon', href: '/images/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' }],
     ['link', { rel: 'icon', href: '/images/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }],
