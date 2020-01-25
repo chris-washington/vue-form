@@ -1,0 +1,21 @@
+{
+  "short_name": "Form",
+  "name": "VRx Form",
+  "icons": [
+    {
+      "src": "/vue-form/images/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/vue-form/images/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/vue-form",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/vue-form",
+  "theme_color": "#3eaf7c"
+}

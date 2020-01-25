@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Field setup | VRx Form</title>
+    <meta name="description" content="Simplify form validations and handling with VRx Form">
+    <meta name="google-site-verification" content="qbfarOJEM-pQ71lpqfc1zqyMXR2-hjW7ehGjF1s9wbU">
+  <link rel="icon" href="/vue-form/images/favicon.ico">
+  <link rel="icon" href="/vue-form/images/android-chrome-192x192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/vue-form/images/android-chrome-512x512.png" sizes="512x512" type="image/png">
+  <link rel="shortcut icon" href="/vue-form/images/favicon-16x16.png">
+  <link rel="manifest" href="/vue-form/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <link rel="apple-touch-icon" href="/vue-form/images/apple-touch-icon.png">
+    
+    <link rel="preload" href="/vue-form/assets/css/0.styles.dae641ed.css" as="style"><link rel="preload" href="/vue-form/assets/js/app.99fddd1f.js" as="script"><link rel="preload" href="/vue-form/assets/js/2.8551c5f2.js" as="script"><link rel="preload" href="/vue-form/assets/js/11.cdadb876.js" as="script"><link rel="prefetch" href="/vue-form/assets/js/10.9d7fbe46.js"><link rel="prefetch" href="/vue-form/assets/js/12.aaacd424.js"><link rel="prefetch" href="/vue-form/assets/js/13.9057f8a1.js"><link rel="prefetch" href="/vue-form/assets/js/14.f30cf23d.js"><link rel="prefetch" href="/vue-form/assets/js/15.da00d7f0.js"><link rel="prefetch" href="/vue-form/assets/js/16.1a64eed9.js"><link rel="prefetch" href="/vue-form/assets/js/3.d7f937d4.js"><link rel="prefetch" href="/vue-form/assets/js/4.b686cd52.js"><link rel="prefetch" href="/vue-form/assets/js/5.a8d58524.js"><link rel="prefetch" href="/vue-form/assets/js/6.0692e66e.js"><link rel="prefetch" href="/vue-form/assets/js/7.ad610453.js"><link rel="prefetch" href="/vue-form/assets/js/8.2692a7f5.js"><link rel="prefetch" href="/vue-form/assets/js/9.193992fa.js">
+    <link rel="stylesheet" href="/vue-form/assets/css/0.styles.dae641ed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-form/" class="home-link router-link-active"><img src="/vue-form/images/logo.png" alt="VRx Form" class="logo"> <span class="site-name can-hide">VRx Form</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-form/guides/" class="nav-link router-link-active">Guides</a></div><div class="nav-item"><a href="/vue-form/api/" class="nav-link">API</a></div><div class="nav-item"><a href="https://github.com/chris-washington/vue-form" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-form/guides/" class="nav-link router-link-active">Guides</a></div><div class="nav-item"><a href="/vue-form/api/" class="nav-link">API</a></div><div class="nav-item"><a href="https://github.com/chris-washington/vue-form" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/vue-form/guides/" class="sidebar-link">Getting Started</a></li><li><a href="/vue-form/guides/form.html" class="sidebar-link">Form setup</a></li><li><a href="/vue-form/guides/fields.html" class="active sidebar-link">Field setup</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form/guides/fields.html#initialization" class="sidebar-link">Initialization</a></li><li class="sidebar-sub-header"><a href="/vue-form/guides/fields.html#custom-input-events" class="sidebar-link">Custom Input Events</a></li><li class="sidebar-sub-header"><a href="/vue-form/guides/fields.html#active-error" class="sidebar-link">Active error</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form/guides/fields.html#demo" class="sidebar-link">Demo</a></li></ul></li></ul></li><li><a href="/vue-form/guides/validators.html" class="sidebar-link">Validator setup</a></li><li><a href="/vue-form/guides/submit.html" class="sidebar-link">Handling submit</a></li><li><a href="/vue-form/guides/state.html" class="sidebar-link">Working with state</a></li><li><a href="/vue-form/guides/examples.html" class="sidebar-link">Full Example</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="field-setup"><a href="#field-setup" class="header-anchor">#</a> Field setup</h1> <p>To <code>v-form</code> is activated by its individual fields. When a field on a standard <code>HTMLInput</code> or custom vue input components/web components gives the form the ability to perform validations.</p> <h2 id="initialization"><a href="#initialization" class="header-anchor">#</a> Initialization</h2> <p>By adding the directive <code>v-form-field</code> to the field, it signifies that the field should be validated:</p> <div class="language-vue line-numbers-mode"><div class="highlight-lines"><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br></div><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">v-form</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>myForm<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> 
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text
+      v-model=<span class="token punctuation">&quot;</span></span><span class="token attr-name">myData.message&quot;</span>
+      <span class="token attr-name">v-form-field</span> <span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+ <span class="token comment">// omitted for this example</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><div class="custom-block danger"><p class="custom-block-title">FATAL</p> <p>The <code>v-form-field</code> directive must be paired with <code>v-model</code>. If it is not an error will be thrown. This is because <code>v-model</code> updates the data while <code>v-form-field</code> validates the data.</p></div> <h2 id="custom-input-events"><a href="#custom-input-events" class="header-anchor">#</a> Custom Input Events</h2> <p>Some times it is necessary to override the default browser <code>input</code> event or override the forms <a href="/vue-form/guides/form.html#custom-input-event">v-form:inputEvent</a> when a field is a custom web component or vue component that dispatches an input event that is not named <code>input</code>.</p> <p>This is done by passing in an argument to <code>v-form-field</code> named <code>inputEvent</code> like the following:</p> <div class="language-vue line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br></div><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">v-form</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>myForm<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> 
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text
+      v-model=<span class="token punctuation">&quot;</span></span><span class="token attr-name">myData.message&quot;</span>
+      <span class="token attr-name"><span class="token namespace">v-form-field:</span>inputEvent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">'</span>my-input-event'<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+ <span class="token comment">// omitted for this example</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>The above highlighted code tells VRx Form to listen to events named <code>my-input-event</code> only for that particular field. This will also help <code>v-model</code> know how to set the value properly (which has been a limitation of <code>v-model</code> in the past).</p> <h2 id="active-error"><a href="#active-error" class="header-anchor">#</a> Active error</h2> <p>There are lots of use cases where you may want to alert users of their errors in real time. This library provides a way to control when an error is populated.</p> <p>When the <code>active-error</code> attribute is added to a form field it will ensure that the errors populate every time a user types in that field (on blur).</p> <p>To take advantage of this feature just add <code>active-error</code> to the field:</p> <div class="language-vue line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">v-form</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>messageForm<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>message.note<span class="token punctuation">&quot;</span></span> 
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">v-form-field</span>
+      <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>message.note<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">active-error</span> <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>noteError<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      {{ noteError }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>!messageForm.isValid<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Submit Message<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
+import { VRXFormValidatorTypes } from 'vrx-form';
+export default {
+  name: 'HelloForm',
+  data() {
+    return {
+      message: {
+        note: null
+      },
+      // creates the form validation handler
+      messageForm: this.$createForm()
+    }
+  },
+  mounted() {
+    this.messageForm
+      .setValidations({
+        'note': [{
+          type: VRXFormValidatorTypes.MIN_LENGTH,
+          validation: 8,
+          message: 'Not enough characters. Needs to be at least 8',
+        }],
+      })
+      .init();
+  },
+  methods: {
+    submit() {
+      /** omitted for this example **/
+    },
+  },
+  computed: {
+    noteError() {
+      /** omitted for this example **/
+    }
+  }
+};
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><h3 id="demo"><a href="#demo" class="header-anchor">#</a> Demo</h3> <p>Click into the input field, type something and then click outside of the input field to see the error:</p> <br> <!----></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue-form/guides/form.html" class="prev">Form setup</a></span> <span class="next"><a href="/vue-form/guides/validators.html">Validator setup</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-form/assets/js/app.99fddd1f.js" defer></script><script src="/vue-form/assets/js/2.8551c5f2.js" defer></script><script src="/vue-form/assets/js/11.cdadb876.js" defer></script>
+  </body>
+</html>
