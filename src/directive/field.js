@@ -21,13 +21,13 @@ export default {
     registerInvalid(el);
     registerModel(el, vnode);
   },
-  inserted(el, binding, vnode) {
+  inserted(el, _, vnode) {
     const inputEvent = el.dataset.inputEvent || el.form.dataset.inputEvent || "input";
     if (inputEvent !== "input") {
       registerCustomInput(vnode, inputEvent);
     }
   },
-  update(el, binding, vnode) {
+  update(el, _, vnode) {
     const modelDirective = getModelDirective(vnode);
     if (el.dataset.dataName) {
       set(vnode.elm, "value", modelDirective.value || null);

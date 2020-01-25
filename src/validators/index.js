@@ -1,14 +1,16 @@
 import { isString } from "lodash-es";
+import createMixin from "./create-mixin";
 import validatorTypes from "./validator-types";
-import VRXRequiredValidator from "./required-validator";
-import VRXMinLengthValidator from "./min-length-validator";
-import VRXMaxLengthValidator from "./max-length-validator";
-import VRXMaxValidator from "./max-validator";
-import VRXMinValidator from "./min-validator";
-import VRXPatternValidator from "./pattern-validator";
+import requiredMixin from "./required-validator";
+import minLengthMixin from "./min-length-validator";
+import maxLengthMixin from "./max-length-validator";
+import maxMixin from "./max-validator";
+import minMixin from "./min-validator";
+import patternMixin from "./pattern-validator";
 import VRXFormCustomValidator from "./custom-validator";
-import VRXRangeLengthValidator from "./range-length-validator";
-import VRXRangeValidator from "./range-validator";
+import rangeLengthMixin from "./range-length-validator";
+import rangeMixin from "./range-validator";
+import defaultErrorMessages from "./default-messages";
 
 export default class VRXFormValidator {
   static TYPES = validatorTypes;
@@ -16,22 +18,52 @@ export default class VRXFormValidator {
   static createValidator(type, message, validationValue, options) {
     if (isString(type)) {
       switch (type) {
-        case VRXFormValidator.TYPES.REQUIRED:
-          return new VRXRequiredValidator(validationValue, message);
-        case VRXFormValidator.TYPES.MIN_LENGTH:
-          return new VRXMinLengthValidator(validationValue, message);
-        case VRXFormValidator.TYPES.MAX_LENGTH:
-          return new VRXMaxLengthValidator(validationValue, message);
-        case VRXFormValidator.TYPES.MAX:
-          return new VRXMaxValidator(validationValue, message);
-        case VRXFormValidator.TYPES.MIN:
-          return new VRXMinValidator(validationValue, message);
-        case VRXFormValidator.TYPES.PATTERN:
-          return new VRXPatternValidator(validationValue, message);
-        case VRXFormValidator.TYPES.RANGE:
-          return new VRXRangeValidator(validationValue, message);
-        case VRXFormValidator.TYPES.RANGE_LENGTH:
-          return new VRXRangeLengthValidator(validationValue, message);
+        case "required":
+          return createMixin(
+            requiredMixin,
+            "required",
+            validationValue,
+            message || defaultErrorMessages.required
+          );
+        case "minLength":
+          return createMixin(
+            minLengthMixin,
+            "minLength",
+            validationValue,
+            message || defaultErrorMessages.minLength
+          );
+        case "maxLength":
+          return createMixin(
+            maxLengthMixin,
+            "maxLength",
+            validationValue,
+            message || defaultErrorMessages.maxLength
+          );
+        case "max":
+          return createMixin(maxMixin, "max", validationValue, message || defaultErrorMessages.max);
+        case "min":
+          return createMixin(minMixin, "min", validationValue, message || defaultErrorMessages.min);
+        case "pattern":
+          return createMixin(
+            patternMixin,
+            "pattern",
+            validationValue,
+            message || defaultErrorMessages.pattern
+          );
+        case "range":
+          return createMixin(
+            rangeMixin,
+            "range",
+            validationValue,
+            message || defaultErrorMessages.range
+          );
+        case "rangeLength":
+          return createMixin(
+            rangeLengthMixin,
+            "rangeLength",
+            validationValue,
+            message || defaultErrorMessages.rangeLength
+          );
         default:
           throw new Error(`Unsupported validator type: ${type}`);
       }

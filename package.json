@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "serve": "npm run build:babel:docs && npm run api:build && vuepress dev docs",
-    "build": "vue-cli-service build --target lib --name vueForm src/index.js",
+    "build": "vue-cli-service build --target lib --name vrxForm src/index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "api:build": "documentation readme src/** -f md --config documentation.yml --shallow --readme-file=docs/api/README.md --markdown-toc=false --section=API",
@@ -23,11 +23,10 @@
     "test": "npm run test:unit && npm run stryker"
   },
   "homepage": "https://chris-washington.github.io/vue-form",
-  "main": "dist/index.js",
-  "browser": "dist/vueForm.umd.js",
+  "main": "dist/vrxForm.common.js",
   "files": [
-    "dist/**/*.js",
-    "dist/**/*.map"
+    "dist/vrxForm.common.js",
+    "dist/vrxForm.common.js.map"
   ],
   "repository": {
     "type": "git",

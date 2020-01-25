@@ -2,14 +2,14 @@ import { get, isNil, set } from "lodash-es";
 
 import FieldHandler from "../field/field-handler";
 
-export default class FormFieldHandler {
-  constructor(el, form, formEventHandler, component) {
-    this.form = form;
-    this.el = el;
-    this.formEventHandler = formEventHandler;
-    this.component = component;
-  }
+function FormFieldHandler(el, form, formEventHandler, component) {
+  this.form = form;
+  this.el = el;
+  this.formEventHandler = formEventHandler;
+  this.component = component;
+}
 
+FormFieldHandler.prototype = {
   getFieldValidatorInfo(name, validators, dataName) {
     const handleFieldInput = this.formEventHandler.getBoundInputEventFunction();
     const handleFieldBlur = this.formEventHandler.getBoundBlurEventFunction();
@@ -26,11 +26,11 @@ export default class FormFieldHandler {
       handleFieldInput,
       originalValue
     };
-  }
+  },
 
   findFieldsByName(name) {
     return this.el.fields.filter(currentField => currentField.dataset.formField === name);
-  }
+  },
 
   async init() {
     const validatorObject = this.form.getValidators();
@@ -65,4 +65,6 @@ export default class FormFieldHandler {
     }
     this.formEventHandler.setFormAttributes(state);
   }
-}
+};
+
+export default FormFieldHandler;

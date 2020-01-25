@@ -3,16 +3,16 @@ import VRXFormValidator from "../validators";
 
 import getValidationErrorIfPresent from "../validators/validation-error";
 
-export default class FieldValidator {
-  constructor(el, name, validatorInfo) {
-    this.el = el;
-    this.name = name;
-    this.validatorInfo = validatorInfo;
-  }
+function FieldValidator(el, name, validatorInfo) {
+  this.el = el;
+  this.name = name;
+  this.validatorInfo = validatorInfo;
+}
 
+FieldValidator.prototype = {
   getValidatorInfo() {
     return this.validatorInfo;
-  }
+  },
 
   setValidations(validators) {
     this.validators = [];
@@ -22,12 +22,12 @@ export default class FieldValidator {
 
       this.validators[i] = VRXFormValidator.createValidator(type, message, validation, options);
     }
-  }
+  },
 
   initValidators() {
     const { validators } = this.validatorInfo;
     this.setValidations(validators);
-  }
+  },
 
   getPriorityErrorMessage(index, errors) {
     if (!isNil(errors) && !isNil(index)) {
@@ -35,7 +35,7 @@ export default class FieldValidator {
     }
 
     return undefined;
-  }
+  },
 
   checkIfRequired() {
     const requiredValidator = this.validators.find(validator => validator.type === "required");
@@ -45,19 +45,19 @@ export default class FieldValidator {
     }
 
     return requiredValidator.validationValue;
-  }
+  },
 
   checkNotHasValueAndNotRequired(value) {
     return !this.checkIfRequired() && value === "";
-  }
+  },
 
   shouldValidate(value) {
     return !this.checkNotHasValueAndNotRequired(value);
-  }
+  },
 
   isCheckedType() {
     return this.el.type === "checkbox" || this.el.type === "radio";
-  }
+  },
 
   getTrimmedValue(value) {
     let trimmedValue;
@@ -67,7 +67,7 @@ export default class FieldValidator {
     }
 
     return trimmedValue || value;
-  }
+  },
 
   async validate() {
     let errors;
@@ -102,4 +102,6 @@ export default class FieldValidator {
     this.el.errors = errors;
     return errors;
   }
-}
+};
+
+export default FieldValidator;

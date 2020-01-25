@@ -53,3 +53,9 @@ export const constructValidationMessage = (result, validator) => {
 
   return undefined;
 };
+
+export const checkForRangeErrors = validationValue =>
+  throwIfNotTrue(
+    isValidRange(validationValue),
+    `${validationValue.toString()} is not a proper range array.`
+  );

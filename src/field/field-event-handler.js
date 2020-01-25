@@ -3,31 +3,31 @@ import { isNil, get } from "lodash-es";
 import { addSubscription } from "../helpers/utils/operations";
 import FieldAttributeHandler from "./field-attribute-handler";
 
-export default class FieldEventHandler {
-  constructor(el, fieldEvents, fieldValidator) {
-    this.el = el;
-    this.name = el.dataset.formField;
-    const inputEvent = this.el.dataset.inputEvent || fieldEvents.inputEvent;
-    this.bindInputEvent(inputEvent);
-    this.bindBlurEvent();
-    this.fieldValidator = fieldValidator;
-    this.fieldAttributeHandler = new FieldAttributeHandler(el, fieldValidator);
-  }
+function FieldEventHandler(el, fieldEvents, fieldValidator) {
+  this.el = el;
+  this.name = el.dataset.formField;
+  const inputEvent = this.el.dataset.inputEvent || fieldEvents.inputEvent;
+  this.bindInputEvent(inputEvent);
+  this.bindBlurEvent();
+  this.fieldValidator = fieldValidator;
+  this.fieldAttributeHandler = new FieldAttributeHandler(el, fieldValidator);
+}
 
+FieldEventHandler.prototype = {
   async clear() {
     this.fieldAttributeHandler.clear();
-  }
+  },
 
   bindInputEvent(inputEvent) {
     addSubscription(
       this.el,
       fromEvent(this.el, inputEvent).subscribe(this.handleInputEvent.bind(this))
     );
-  }
+  },
 
   bindBlurEvent() {
     addSubscription(this.el, fromEvent(this.el, "blur").subscribe(this.handleBlurEvent.bind(this)));
-  }
+  },
 
   handleEvent(event) {
     return new Promise(resolve => {
@@ -52,7 +52,7 @@ export default class FieldEventHandler {
         });
       }, 0);
     });
-  }
+  },
 
   async handleInputEvent(event) {
     this.el.isInvalid = false;
@@ -62,13 +62,13 @@ export default class FieldEventHandler {
     } else {
       this.onFormFieldInput(await this.handleEvent(event));
     }
-  }
+  },
 
   async handleBlurEvent(event) {
     const result = await this.handleEvent(event);
     this.el.isInvalid = this.el.hasErrors;
     this.onFormFieldChanged(result);
-  }
+  },
 
   initEventHandlers() {
     this.fieldAttributeHandler.init();
@@ -83,4 +83,6 @@ export default class FieldEventHandler {
     this.onFormFieldInput = handleFieldInput;
     this.originalValue = originalValue;
   }
-}
+};
+
+export default FieldEventHandler;

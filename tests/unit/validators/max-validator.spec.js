@@ -1,40 +1,15 @@
-import VRXMaxValidator from "@/validators/max-validator";
+import maxMixin from "@/validators/max-validator";
 
 describe("validators/max-validator.js", () => {
   describe("When initialized", () => {
-    const validationValue = 8;
-    let validator;
-
-    describe("and default message is used", () => {
-      beforeEach(() => {
-        validator = new VRXMaxValidator(validationValue);
-      });
-
-      it("then the error message is default", () => {
-        expect(validator.getMessage()).toBe(
-          `Must be a number and the max number allowed is ${validationValue}.`
-        );
-      });
-    });
+    maxMixin.validationValue = 8;
 
     describe("and custom message is used", () => {
-      const type = "max";
-      const message = "my message";
-
-      beforeEach(() => {
-        validator = new VRXMaxValidator(validationValue, message);
-      });
-
       it("then it validates correctly", () => {
-        expect(validator.type).toBe(type);
-        expect(validator.validate(7)).toBeTruthy();
-        expect(validator.validate(8)).toBeTruthy();
-        expect(validator.validate(null)).toBeTruthy();
-        expect(validator.validate(16)).toBeFalsy();
-      });
-
-      it("then the message is equal to the intialized message", () => {
-        expect(message).toBe(validator.getMessage());
+        expect(maxMixin.validate(7)).toBeTruthy();
+        expect(maxMixin.validate(8)).toBeTruthy();
+        expect(maxMixin.validate(null)).toBeTruthy();
+        expect(maxMixin.validate(16)).toBeFalsy();
       });
     });
   });

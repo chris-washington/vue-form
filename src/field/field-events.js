@@ -1,9 +1,9 @@
-export default class FieldEvents {
-  constructor(inputEvent) {
-    Object.defineProperty(this, "inputEvent", {
-      get() {
-        return inputEvent;
-      }
-    });
-  }
+function FieldEvents(inputEvent) {
+  Object.defineProperty(this, "inputEvent", {
+    get() {
+      return inputEvent;
+    }
+  });
 }
+
+export default FieldEvents;

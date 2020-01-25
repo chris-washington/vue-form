@@ -1,21 +1,23 @@
-import BaseValidator from "./base-validator";
-
 /**
  * @class
  * @classdesc Extendible class for creating custom validations
  *            that can be shared across a Vue project.
  */
-export default class VRXFormCustomValidator extends BaseValidator {
+function VRXFormCustomValidator(type, message, options) {
+  this.type = type;
+  this.message = message;
+  this.options = options;
+}
+
+VRXFormCustomValidator.prototype = {
   /**
+   * Validates the field. Must be overwritten
    *
-   * @param {string} type - This is the unique name of the validator.
-   *                        Used to identifiy error messages
-   * @param {string} message - Sets the default message when the validation fails.
+   * @throws Will throw a no implementation error, if not overwritten
    */
-  constructor(type, message, options) {
-    super(type, null, message, false);
-    this.options = options;
-  }
+  validate() {
+    throw new Error(`You have to implement the method "validate" for ${this.constructor.name}`);
+  },
 
   /**
    * Returns the set message on initialization
@@ -23,4 +25,6 @@ export default class VRXFormCustomValidator extends BaseValidator {
   getMessage() {
     return this.message;
   }
-}
+};
+
+export default VRXFormCustomValidator;

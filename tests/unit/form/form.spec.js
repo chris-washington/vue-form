@@ -20,14 +20,14 @@ describe("form/form.js", () => {
 
     describe("when isDirty is accessed", () => {
       it("then it returns dirty", () => {
-        vueForm.dirty = true;
+        vueForm.isDirty = true;
         expect(vueForm.isDirty).toBeTruthy();
       });
     });
 
     describe("when isPristine is accessed", () => {
       it("then it returns pristine", () => {
-        vueForm.pristine = true;
+        vueForm.isPristine = true;
         expect(vueForm.isPristine).toBeTruthy();
       });
     });

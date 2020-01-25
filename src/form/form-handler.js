@@ -4,19 +4,22 @@ import { addSubscription } from "../helpers/utils/operations";
 
 import FormAttributesHandler from "./form-attributes-handler";
 
-export default class VRXFormHandler {
-  constructor(el, component, formName) {
-    this.el = el;
-    this.component = component;
-    this.form = this.component[formName];
-    this.formAttributeHandler = new FormAttributesHandler(this.el, this.form, component);
-  }
+function VRXFormHandler(el, component, formName) {
+  this.el = el;
+  this.component = component;
+  this.form = this.component[formName];
+  this.formAttributeHandler = new FormAttributesHandler(this.el, this.form, component);
+}
 
+VRXFormHandler.prototype = {
   async handleClearForm(doClearForm) {
     if (doClearForm) {
       let state = {};
       for (let i = this.el.fields.length; i--; ) {
         const field = this.el.fields[i];
+        field.isPristine = true;
+        field.isDirty = false;
+
         unset(this.component, field.dataset.dataName);
         // eslint-disable-next-line no-await-in-loop
         set(state, field.dataset.formField, {
@@ -29,13 +32,13 @@ export default class VRXFormHandler {
       await this.component.$nextTick();
       this.component.$forceUpdate();
     }
-  }
+  },
 
   async handleInitialization(ready) {
     if (ready) {
       await this.formAttributeHandler.init();
     }
-  }
+  },
 
   init() {
     addSubscription(
@@ -47,4 +50,6 @@ export default class VRXFormHandler {
       this.form.getClearFormObservable().subscribe(this.handleClearForm.bind(this))
     );
   }
-}
+};
+
+export default VRXFormHandler;

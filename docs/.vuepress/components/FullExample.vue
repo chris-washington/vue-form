@@ -1,6 +1,14 @@
 <template>
 <div>
   <form v-form="profileForm">
+    <div>
+      Form attributes:
+      <ul>
+        <li>isDirty: {{profileForm.isDirty}}</li>
+        <li>isPristine: {{profileForm.isPristine}}</li>
+        <li>isValid: {{profileForm.isValid}}</li>
+      </ul>
+    </div>
     <div class="input-block">
       <label for="profile.username">Username*</label>
       <input

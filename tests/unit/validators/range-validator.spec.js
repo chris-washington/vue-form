@@ -1,53 +1,32 @@
-import VRXRangeValidator from "@/validators/range-validator";
-import { throwIfNotTrue, isValidRange } from "@/helpers/utils/operations";
+import rangeMixin from "@/validators/range-validator";
+import { checkForRangeErrors } from "@/helpers/utils/operations";
 
 jest.mock("@/helpers/utils/operations");
 
 describe("validators/range-validator.js", () => {
   describe("When initialized", () => {
-    const validationValue = [8, 16];
-    let validator;
+    rangeMixin.validationValue = [8, 16];
 
-    describe("and default message is used", () => {
+    describe("and preCheck is called", () => {
       beforeEach(() => {
-        isValidRange.mockReturnValue(true);
-        validator = new VRXRangeValidator(validationValue);
+        rangeMixin.preCheck(rangeMixin.validationValue);
       });
 
-      it("then the error message is default", () => {
-        expect(throwIfNotTrue).toHaveBeenCalledWith(
-          true,
-          `${validationValue.toString()} is not a proper range array.`
-        );
-        expect(isValidRange).toHaveBeenCalledWith(validationValue);
-        expect(validator.getMessage()).toBe(
-          `The number must be between the values ${validationValue[0]} and ${validationValue[1]}.`
-        );
+      it("then checkForRangeErrors is called with validationValue", () => {
+        expect(checkForRangeErrors).toHaveBeenCalledWith(rangeMixin.validationValue);
       });
     });
 
     describe("and custom message is used", () => {
-      const type = "range";
-      const message = "my message";
-
-      beforeEach(() => {
-        validator = new VRXRangeValidator(validationValue, message);
-      });
-
       it("then it validates correctly", () => {
-        expect(validator.type).toBe(type);
-        expect(validator.validate(7)).toBeFalsy();
-        expect(validator.validate(8)).toBeTruthy();
-        expect(validator.validate(17)).toBeFalsy();
-        expect(validator.validate(12)).toBeTruthy();
-        expect(validator.validate(null)).toBeFalsy();
-        expect(validator.validate(undefined)).toBeFalsy();
-        expect(validator.validate("")).toBeFalsy();
-        expect(validator.validate(16)).toBeTruthy();
-      });
-
-      it("then the message is equal to the intialized message", () => {
-        expect(message).toBe(validator.getMessage());
+        expect(rangeMixin.validate(7)).toBeFalsy();
+        expect(rangeMixin.validate(8)).toBeTruthy();
+        expect(rangeMixin.validate(17)).toBeFalsy();
+        expect(rangeMixin.validate(12)).toBeTruthy();
+        expect(rangeMixin.validate(null)).toBeFalsy();
+        expect(rangeMixin.validate(undefined)).toBeFalsy();
+        expect(rangeMixin.validate("")).toBeFalsy();
+        expect(rangeMixin.validate(16)).toBeTruthy();
       });
     });
   });

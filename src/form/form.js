@@ -6,74 +6,41 @@ import { isNil, get } from "lodash-es";
  * @class
  * @classdesc Used to create a form object to do validation
  */
-export default class VRXForm {
-  /**
-   * Creates a form object that can do validations
-   *
-   * @example
-   * // To initialize
-   * export default {
-   *    data() {
-   *      return {
-   *        myForm: this.$createForm(),
-   *      };
-   *    },
-   * }
-   *
-   * @example
-   * // can also import
-   * import { VRXForm } from 'vrx-form'
-   *
-   * export default {
-   *    data() {
-   *      return {
-   *        myForm: new VRXForm(),
-   *      }
-   *    }
-   * }
-   */
-  constructor() {
-    this.initSubject = new BehaviorSubject();
-    this.validators = {};
-    this.state = {};
-    this.pristine = true;
-    this.dirty = false;
-    this.clearFormSubject = new BehaviorSubject();
-  }
+/**
+ * Creates a form object that can do validations
+ *
+ * @example
+ * // To initialize
+ * export default {
+ *    data() {
+ *      return {
+ *        myForm: this.$createForm(),
+ *      };
+ *    },
+ * }
+ *
+ * @example
+ * // can also import
+ * import { VRXForm } from 'vrx-form'
+ *
+ * export default {
+ *    data() {
+ *      return {
+ *        myForm: new VRXForm(),
+ *      }
+ *    }
+ * }
+ */
+function VRXForm() {
+  this.initSubject = new BehaviorSubject();
+  this.validators = {};
+  this.state = {};
+  this.isPristine = true;
+  this.isDirty = false;
+  this.clearFormSubject = new BehaviorSubject();
+}
 
-  /**
-   * Returns whether a form is dirty. A form is dirty
-   * When 1 or more fields value does not match its original
-   * valuebundleRenderer.renderToStream
-   */
-  get isDirty() {
-    return this.dirty;
-  }
-
-  /**
-   * Returns whether a form is pristine. A form is pristine
-   * if a user has never changes a value in a field. Once changed
-   * it does not return to a pristine state.
-   */
-  get isPristine() {
-    return this.pristine;
-  }
-
-  /**
-   * Returns whether a form has fields that, when validated are
-   * all valid.
-   */
-  get isValid() {
-    return this.valid;
-  }
-
-  /**
-   * @private
-   */
-  set isValid(valid) {
-    this.valid = valid;
-  }
-
+VRXForm.prototype = {
   /**
    * Returns whether a field has errors
    * @param {string } name - name of the field that needs input.
@@ -102,7 +69,7 @@ export default class VRXForm {
   hasError(name) {
     const state = get(this.state, name);
     return isNil(state) ? false : !isNil(state.errors);
-  }
+  },
 
   /**
    *
@@ -116,7 +83,7 @@ export default class VRXForm {
     if (!isNil(state.errors)) {
       return state.errors[validation];
     }
-  }
+  },
   /**
    * Sets the validators that will validate the fields. Once {@link init}
    * is called this can no longer be set.
@@ -127,7 +94,7 @@ export default class VRXForm {
   setValidations(validators) {
     this.validators = validators;
     return this;
-  }
+  },
 
   /**
    * Clears the form back to a blank state. Please
@@ -136,14 +103,14 @@ export default class VRXForm {
    */
   clearForm() {
     this.clearFormSubject.next(true);
-  }
+  },
 
   /**
    * @private
    */
   getClearFormObservable() {
     return this.clearFormSubject.asObservable();
-  }
+  },
 
   /**
    * The final step in the form setup. Once the data
@@ -152,14 +119,14 @@ export default class VRXForm {
    */
   init() {
     this.initSubject.next(true);
-  }
+  },
 
   /**
    * @private
    */
   getInitObservable() {
     return this.initSubject.asObservable();
-  }
+  },
 
   /**
    * Returns the current validator object.
@@ -168,8 +135,9 @@ export default class VRXForm {
   getValidators() {
     return this.validators;
   }
-}
+};
 
+export default VRXForm;
 /**
  * Defines a validation for a field
  * @typedef {Object} VRXFormValidator
